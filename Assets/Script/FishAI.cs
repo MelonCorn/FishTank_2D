@@ -145,6 +145,21 @@ public class FishAI : MonoBehaviour
     }
 
 
+    // 먹이 받아 먹음 (Food 에서 호출)
+    public void EatFood()
+    {
+        // 먹이 추적 상태 아니면
+        if (currentState != FishState.ChaseFood) return;
+
+        Debug.Log("먹이 먹음");
+
+        // 먹이 없어져서 다시 한가해짐
+        ChangeState(FishState.Idle);
+    }
+
+
+
+
     // 상태 변경
     void ChangeState(FishState newState)
     {
@@ -222,23 +237,5 @@ public class FishAI : MonoBehaviour
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
         else
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
-    }
-
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        // 먹이 추적 상태 아니면
-        if (currentState != FishState.ChaseFood) return;
-
-        // 먹이 닿았을 때
-        if (other.CompareTag("Food"))
-        {
-            // 나중에 먹이에서 처리. 중복 피딩 가능하기 때문에
-            // 냠냠 처리 (배부름 증가, 먹이 비활성화 등)
-            Destroy(other.gameObject);
-
-            // 먹이 없어져서 다시 한가해짐
-            ChangeState(FishState.Idle);
-        }
     }
 }
