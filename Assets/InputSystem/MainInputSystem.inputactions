@@ -7,9 +7,36 @@
             "id": "b9c08ddb-23f2-4ada-b4c0-89307205b1e0",
             "actions": [
                 {
-                    "name": "Feed",
+                    "name": "Interaction",
                     "type": "Button",
                     "id": "5eec270e-7d29-4779-b229-89e044dd9eda",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SpawnFood",
+                    "type": "Button",
+                    "id": "bd0ccc30-541b-454c-a04e-fbd493e63b91",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SpawnFish",
+                    "type": "Button",
+                    "id": "0629cdf5-10db-4965-b6fa-65d520a56d6b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Nothing",
+                    "type": "Button",
+                    "id": "6fce9938-8e5a-4a09-997f-a3194484c08d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -24,7 +51,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Feed",
+                    "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07a71c4c-78c6-43c7-9b59-465980a338b6",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpawnFood",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ed88b58-8c6c-47bf-b8a8-216fd19824f9",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpawnFish",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b61fa9c3-e8a8-4734-b44a-15dbffc9e58e",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Nothing",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

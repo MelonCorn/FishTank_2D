@@ -39,7 +39,6 @@ public class FishAI : MonoBehaviour
 
 
 
-
     void Start()
     {
         mainCamera = Camera.main;
@@ -52,6 +51,12 @@ public class FishAI : MonoBehaviour
 
         // 시작 시 Idle 상태
         ChangeState(FishState.Idle);
+
+        // 처음엔 바로 이동하게
+        waitTime = 0;
+
+        // 어항의 물고기 리스트에 자신 등록
+        FishTank.Instance.AddFishList(this);
     }
 
     void Update()
@@ -144,21 +149,15 @@ public class FishAI : MonoBehaviour
         FlipSprite(targetPos); 
     }
 
-
     // 먹이 받아 먹음 (Food 에서 호출)
     public void EatFood()
     {
         // 먹이 추적 상태 아니면
         if (currentState != FishState.ChaseFood) return;
 
-        Debug.Log("먹이 먹음");
-
         // 먹이 없어져서 다시 한가해짐
         ChangeState(FishState.Idle);
     }
-
-
-
 
     // 상태 변경
     void ChangeState(FishState newState)
