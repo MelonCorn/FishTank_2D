@@ -23,6 +23,11 @@ public class Food : MonoBehaviour
 
         // 이미지 적용
         spriteRenderer.sprite = foodData.sprite;
+
+        // 수명 시간 뒤에 풀 반환
+        Invoke(nameof(Despawn), foodData.lifeTime);
+
+        isEaten = false;
     }
 
     private void Awake()
@@ -30,11 +35,13 @@ public class Food : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-
-    // 활성화 시
-    private void OnEnable()
+    // 풀 반납
+    private void Despawn()
     {
-        isEaten = false;
+        // 반납 전에 타이머 취소
+        CancelInvoke();
+
+        foodManager.ReturnToPool(this);
     }
 
 
@@ -55,8 +62,8 @@ public class Food : MonoBehaviour
                 // 물고기가 먹음
                 fish.EatFood(foodData.exp);
 
-                // 풀 반환
-                foodManager.ReturnToPool(this);
+                // 풀 반납
+                Despawn();
             }
         }
     }

@@ -12,8 +12,8 @@ public enum FishState
 public class FishAI : MonoBehaviour
 {
 
-    FishTank fishTank;                               // 어항 
-    FishData fishData;                               // 물고기 정보
+    private FishTank fishTank;                       // 어항 
+    private FishData fishData;                       // 물고기 정보
 
     private SpriteRenderer spriteRenderer;           // 스프라이트 렌더러
 
@@ -22,14 +22,16 @@ public class FishAI : MonoBehaviour
     private Transform foodTarget;                    // 감지된 먹이 정보
     private Vector2 movePoint;                       // 이동 포인트
 
-    private float waitTime;                          // 현재 대기 시간
-    private float currentHungry;                     // 현재 허기치
+    private float waitTimer;                         // 현재 대기 시간
+    private int currentHungry;                       // 현재 허기치
     private int currentExp;                          // 현재 성장치
 
     private bool isGrowth;                           // 성장 여부
 
     private Coroutine detectFoodCoroutine;           // 먹이 감지 코루틴
-    private WaitForSeconds detectFoodDelay;          // 코루틴 감지 간격
+    private WaitForSeconds detectFoodDelay;          // 감지 간격
+
+    private WaitForSeconds hungerDelay;              // 허기 간격
 
 
 
@@ -46,17 +48,31 @@ public class FishAI : MonoBehaviour
 
         // 먹이 감지 간격 설정
         detectFoodDelay = new WaitForSeconds(fishData.foodDetectInterval);
+        // 허기 간격 설정
+        hungerDelay = new WaitForSeconds(fishData.hungerInterval);
 
         // 치어 이미지 적용
         spriteRenderer.sprite = fishData.babySprite;
 
         // 활성화 시 Idle 상태
         ChangeState(FishState.Idle);
+
+        // 허기 코루틴 시작
+        // 살아있는 동안 계속 돌아가므로 안 담아도 됨
+        StartCoroutine(Hunger());
+
     }
+
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void OnEnable()
+    {
+        currentHungry = 0;
+        currentExp = 0;
     }
 
     void Update()
@@ -76,7 +92,7 @@ public class FishAI : MonoBehaviour
 
 
     // 상태 변경
-    void ChangeState(FishState newState)
+    private void ChangeState(FishState newState)
     {
         // 이전 상태 정리
         switch (currentState)
@@ -84,15 +100,14 @@ public class FishAI : MonoBehaviour
             case FishState.Idle:
                 // 감지 코루틴이 돌고 있으면 정지
                 if (detectFoodCoroutine != null)
-                {
-                    StopCoroutine(detectFoodCoroutine);
                     detectFoodCoroutine = null;
-                }
                 break;
+
             case FishState.ChaseFood:
                 // 먹이 타겟 제거, 나중에 강제 변환 시 
                 foodTarget = null;
                 break;
+
             case FishState.Dead:
                 break;
         }
@@ -106,14 +121,41 @@ public class FishAI : MonoBehaviour
                 // 다른 지점 이동
                 SetRandomTarget();
                 // 바로 움직이게
-                waitTime = 0f;
+                waitTimer = 0f;
                 // 먹이 탐지 코루틴 실행
                 detectFoodCoroutine = StartCoroutine(DetectFood());
                 break;
+
             case FishState.ChaseFood:
                 break;
+
             case FishState.Dead:
                 break;
+        }
+    }
+
+
+    // 허기
+    private IEnumerator Hunger()
+    {
+        // 사망 상태가 아니면 루프
+        while(currentState != FishState.Dead)
+        {
+            // 허기 간격만큼 대기
+            yield return hungerDelay;
+
+            // 현재 허기 증가
+            currentHungry += fishData.hungerAmount;
+
+            // 현재 허기가 최대 허기 이상이면
+            if(currentHungry >= fishData.maxHungry)
+            {
+                currentHungry = fishData.maxHungry;
+                // 사망
+                Die();
+                //코루틴 종료
+                yield break;
+            }
         }
     }
 
@@ -135,17 +177,17 @@ public class FishAI : MonoBehaviour
         if (Vector2.Distance(transform.position, movePoint) < 0.1f)
         {
             // 대기 시간 0초 되면
-            if (waitTime <= 0)
+            if (waitTimer <= 0)
             {
                 // 랜덤 이동 포인트 지정
                 SetRandomTarget();
                 // 랜덤 이동 대기 시간 설정
-                waitTime = GetRandomWaitTime();
+                waitTimer = GetRandomWaitTime();
             }
             // 대기 시간 감소
             else
             {
-                waitTime -= Time.deltaTime;
+                waitTimer -= Time.deltaTime;
             }
         }
     }
@@ -241,6 +283,7 @@ public class FishAI : MonoBehaviour
     {
         ChangeState(FishState.Dead);
 
+        // 풀 반납
         fishTank.ReturnToPool(this);
     }
 
@@ -301,7 +344,7 @@ public class FishAI : MonoBehaviour
 
 
     // 스프라이트 좌우 반전
-    void FlipSprite(Vector2 target)
+    private void FlipSprite(Vector2 target)
     {
         // x 차이 계산
         float xDifference = target.x - transform.position.x;
@@ -320,7 +363,7 @@ public class FishAI : MonoBehaviour
     }
 
     // 위치 제한 
-    Vector2 ClampPosition(Vector3 position)
+    private Vector2 ClampPosition(Vector3 position)
     {
         float clampedX = Mathf.Clamp(position.x, fishTank.MinBounds.x, fishTank.MaxBounds.x);
         float clampedY = Mathf.Clamp(position.y, fishTank.MinBounds.y, fishTank.MaxBounds.y);

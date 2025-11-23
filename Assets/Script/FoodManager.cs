@@ -55,7 +55,7 @@ public class FoodManager : MonoBehaviour
         return food;
     }
 
-    // ∏‘¿Ã «Æ π›»Ø
+    // ∏‘¿Ã «Æ π›≥≥
     public void ReturnToPool(Food fish)
     {
         foodPool.Release(fish);

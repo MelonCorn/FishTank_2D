@@ -14,8 +14,12 @@ public class FishData : ScriptableObject
     public float detectRange = 1.5f;
     [Header("먹이 감지 간격")]
     public float foodDetectInterval = 0.1f;
+    [Header("허기 증가치")]
+    public int hungerAmount = 1;
+    [Header("허기 간격")]
+    public float hungerInterval = 1f;
     [Header("최대 허기")]
-    public float maxHungry = 100f;
+    public int maxHungry = 100;
     [Header("필요 성장 경험치")]
     public int requireExp = 20;
     [Header("감지 먹이 레이어")]

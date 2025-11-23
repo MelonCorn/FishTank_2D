@@ -78,7 +78,7 @@ public class FishTank : MonoBehaviour
         return fish;
     }
 
-    // 물고기 풀 반환
+    // 물고기 풀 반납
     public void ReturnToPool(FishAI fish)
     {
         fishPool.Release(fish);
