@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 // 물고기의 상태 정의
@@ -11,15 +10,16 @@ public enum FishState
 
 public class FishAI : MonoBehaviour
 {
-    FishData fishData;
+    FishData fishData;                         // 물고기 정보
 
     private FishState currentState = FishState.Idle; // 현재 상태
 
-    private Transform foodTarget;              // 발견한 먹이
+    private Transform foodTarget;              // 감지된 먹이 정보
     private Vector2 movePoint;                 // 이동 포인트
-    private float waitTime;                    // 현재 대기 시간
 
+    private float waitTime;                    // 현재 대기 시간
     private float currentHungry;               // 현재 허기치
+    private int currentExp;                    // 현재 성장치
 
     private Coroutine detectFoodCoroutine;           // 먹이 감지 코루틴
     private WaitForSeconds detectFoodDelay;          // 코루틴 감지 간격
@@ -36,11 +36,11 @@ public class FishAI : MonoBehaviour
         // 먹이 감지 간격 설정
         detectFoodDelay = new WaitForSeconds(fishData.foodDetectInterval);
 
+        // 치어 이미지 적용
+        GetComponent<SpriteRenderer>().sprite = fishData.babySprite;
+
         // 시작 시 Idle 상태
         ChangeState(FishState.Idle);
-
-        // 처음엔 바로 이동하게
-        waitTime = 0;
 
         // 어항의 물고기 리스트에 자신 등록
         FishTank.Instance.AddFishList(this);

@@ -57,10 +57,12 @@ public class FishTank : MonoBehaviour
     // 활동 범위 초기화
     void SetCameraBounds()
     {
+        // 메인 카메라
         Camera mainCam = Camera.main;
 
         // 카메라의 높이 절반 (Orthographic Size)
         float vertExtent = mainCam.orthographicSize;
+
         // 카메라의 너비 절반 (높이 * 화면비율)
         float horzExtent = vertExtent * mainCam.aspect;
 
