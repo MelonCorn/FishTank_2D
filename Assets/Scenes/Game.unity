@@ -397,7 +397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &511983467
 RectTransform:
   m_ObjectHideFlags: 0
@@ -643,7 +643,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1336,16 +1336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9916224d7f088fb4a960bc6893837eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishAI
-  padding: 0.5
-  startWaitTime: 2
-  maxHungry: 100
-  moveSpeed: 2
-  chaseMultiplier: 1.5
-  detectRange: 2
-  foodDetectInterval: 0.1
-  foodLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &1667100440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,7 +1414,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72d392ae3d18d3468d0f93e6faf6ae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishTank
+  minBounds: {x: 0, y: 0}
+  maxBounds: {x: 0, y: 0}
   fish: {fileID: 8431602668517086500, guid: 931ad07e4c865444c9442ce028a0d009, type: 3}
+  fishData:
+  - {fileID: 11400000, guid: d73fd0ca87c26bb45a7af79af9710f4c, type: 2}
   fishCountText: {fileID: 1925564477}
 --- !u!4 &1731404367
 Transform:

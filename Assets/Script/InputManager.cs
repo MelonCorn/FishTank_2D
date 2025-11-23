@@ -50,7 +50,7 @@ public class InputManager : MonoBehaviour
         if (ctx.started)
         {
             // UI 위에 마우스가 있다면 클릭 무시
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            //if (EventSystem.current.IsPointerOverGameObject()) return;
 
             // 마우스 위치
             Vector2 screenPosition = Mouse.current.position.ReadValue();
@@ -89,7 +89,7 @@ public class InputManager : MonoBehaviour
     
     void SetCurrentStateText()
     {
-        currentStateText.text = "Current State : " + _currentState.ToString();
+        currentStateText.text = "Current Action : " + _currentState.ToString();
     }
 
 }
