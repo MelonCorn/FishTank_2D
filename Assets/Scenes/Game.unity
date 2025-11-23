@@ -521,7 +521,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 129
+    m_Bits: 385
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -793,7 +793,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dda594f92c046d45a0c48ea95f6f92e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FeedContoller
-  foodPrefab: {fileID: 325523325623255449, guid: 0dd1a6e4aeb0acc4bad37085b0f56478, type: 3}
+  fishTank: {fileID: 1731404366}
+  foodManager: {fileID: 2067123146}
   currentStateText: {fileID: 1820456197}
 --- !u!114 &1135709829
 MonoBehaviour:
@@ -824,7 +825,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1135709828}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnLMBClick
+        m_MethodName: OnInteraction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -872,7 +873,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1135709828}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnNone
+        m_MethodName: OnCancel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -882,8 +883,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 6fce9938-8e5a-4a09-997f-a3194484c08d
-    m_ActionName: 'Player/Nothing[/Keyboard/3]'
+    m_ActionId: 8a641d2c-5c42-46c0-9174-51f37d8055d0
+    m_ActionName: 'Player/InteractionCancel[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1200,11 +1201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72d392ae3d18d3468d0f93e6faf6ae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishTank
-  minBounds: {x: 0, y: 0}
-  maxBounds: {x: 0, y: 0}
-  fish: {fileID: 8431602668517086500, guid: 931ad07e4c865444c9442ce028a0d009, type: 3}
+  fishPrefab: {fileID: 8431602668517086500, guid: 931ad07e4c865444c9442ce028a0d009, type: 3}
   fishData:
   - {fileID: 11400000, guid: d73fd0ca87c26bb45a7af79af9710f4c, type: 2}
+  defaultSize: 10
   fishCountText: {fileID: 1925564477}
 --- !u!4 &1731404367
 Transform:
@@ -1597,15 +1597,64 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2067123144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2067123145}
+  - component: {fileID: 2067123146}
+  m_Layer: 0
+  m_Name: FoodManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2067123145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067123144}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2067123146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067123144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d6838dfa0469cb4f81ed5c73b91268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodManager
+  foodPrefab: {fileID: 3038533185365720591, guid: 0dd1a6e4aeb0acc4bad37085b0f56478, type: 3}
+  foodData:
+  - {fileID: 11400000, guid: 8e4278f4a247ee545bc188cdf3e70701, type: 2}
+  defaultSize: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 1339201490}
+  - {fileID: 946518739}
   - {fileID: 1667100442}
   - {fileID: 467331496}
+  - {fileID: 1994171432}
   - {fileID: 1135709830}
   - {fileID: 1731404367}
-  - {fileID: 946518739}
-  - {fileID: 1994171432}
+  - {fileID: 2067123145}

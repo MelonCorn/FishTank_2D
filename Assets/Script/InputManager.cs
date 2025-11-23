@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -13,7 +14,9 @@ public enum InputState
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] GameObject foodPrefab;     // 먹이 프리팹
+    [SerializeField] FishTank fishTank;
+    [SerializeField] FoodManager foodManager;
+
     [SerializeField] TextMeshProUGUI currentStateText;
 
     private InputState _currentState = InputState.None;   // 현재 버튼
@@ -36,7 +39,7 @@ public class InputManager : MonoBehaviour
             SetCurrentStateText();
         }
     }
-    public void OnNone(InputAction.CallbackContext ctx)
+    public void OnCancel(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
@@ -45,7 +48,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public void OnLMBClick(InputAction.CallbackContext ctx)
+    public void OnInteraction(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
@@ -75,15 +78,15 @@ public class InputManager : MonoBehaviour
         }
     }
 
-
+    // 먹이
     void OnSpawnFood(Vector3 worldPosition)
     {
-        // 생성
-        Instantiate(foodPrefab, worldPosition, Quaternion.identity);
+        foodManager.AddFood(worldPosition);
     }
+    // 물고기
     void OnSpawnFish(Vector3 worldPosition)
     {
-        FishTank.Instance.AddFish(worldPosition);
+        fishTank.AddFish(worldPosition);
     }
 
     

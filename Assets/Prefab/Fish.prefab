@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3531325002143730103
+--- !u!1 &3670726784446051789
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6798942940825339663}
-  - component: {fileID: 3134169090963770567}
-  m_Layer: 0
-  m_Name: Sprite
-  m_TagString: Untagged
+  - component: {fileID: 4776773840613766838}
+  - component: {fileID: 1483630174506424413}
+  - component: {fileID: 6680735516508044936}
+  - component: {fileID: 8431602668517086500}
+  m_Layer: 8
+  m_Name: Fish
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6798942940825339663
+--- !u!4 &4776773840613766838
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3531325002143730103}
+  m_GameObject: {fileID: 3670726784446051789}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4776773840613766838}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3134169090963770567
+--- !u!212 &1483630174506424413
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3531325002143730103}
+  m_GameObject: {fileID: 3670726784446051789}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -79,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8909124772103726781, guid: 2c761e766494cc948b5ff44d780d1e46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.5104451, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,43 +89,9 @@ SpriteRenderer:
   m_Size: {x: 0.03, y: 0.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &3670726784446051789
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4776773840613766838}
-  - component: {fileID: 6680735516508044936}
-  - component: {fileID: 8431602668517086500}
-  m_Layer: 0
-  m_Name: BabyFish
-  m_TagString: Fish
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4776773840613766838
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3670726784446051789}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6798942940825339663}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &6680735516508044936
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -182,13 +150,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9916224d7f088fb4a960bc6893837eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishAI
-  padding: 0.5
-  startWaitTime: 2
-  maxHungry: 100
-  moveSpeed: 2
-  chaseMultiplier: 1.5
-  detectRange: 2
-  foodDetectInterval: 0.1
-  foodLayer:
-    serializedVersion: 2
-    m_Bits: 128

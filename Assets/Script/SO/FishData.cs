@@ -18,8 +18,8 @@ public class FishData : ScriptableObject
     public float maxHungry = 100f;
     [Header("필요 성장 경험치")]
     public int requireExp = 20;
-    [Header("먹이 레이어")]
-    public LayerMask foodLayer;
+    [Header("감지 먹이 레이어")]
+    public LayerMask detectFoodLayer;
     [Header("스프라이트")]
     public Sprite babySprite;         // 치어 스프라이트
     public Sprite growthSprite;       // 성어 스프라이트
