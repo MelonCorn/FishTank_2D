@@ -206,7 +206,9 @@ public class FishAI : MonoBehaviour
     {
         // ÂÑ´ø ¸ÔÀÌ°¡ »ç¶óÁü, °Å¸® ¹þ¾î³²
         // Idle »óÅÂ·Î ÀüÈ¯
-        if (foodTarget == null || Vector2.Distance(transform.position, foodTarget.position) > fishData.detectRange)
+        if (foodTarget == null ||
+            foodTarget.gameObject.activeSelf == false ||
+            Vector2.Distance(transform.position, foodTarget.position) > fishData.detectRange)
         {
             ChangeState(FishState.Idle);
             return;

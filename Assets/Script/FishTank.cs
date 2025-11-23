@@ -78,7 +78,7 @@ public class FishTank : MonoBehaviour
         return fish;
     }
 
-    // 물고기 풀에 반환
+    // 물고기 풀 반환
     public void ReturnToPool(FishAI fish)
     {
         fishPool.Release(fish);
@@ -86,7 +86,7 @@ public class FishTank : MonoBehaviour
         fishCountText.text = "Fish Count : " + fishPool.CountActive.ToString();
     }
 
-    // 물고기 생성 버튼
+    // 물고기 풀 사용
     public void AddFish(Vector3 worldPosition)
     {
         // 풀에서 물고기 가져옴

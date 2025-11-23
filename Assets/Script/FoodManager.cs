@@ -55,13 +55,13 @@ public class FoodManager : MonoBehaviour
         return food;
     }
 
-    // 먹이 풀에 반환
+    // 먹이 풀 반환
     public void ReturnToPool(Food fish)
     {
         foodPool.Release(fish);
     }
 
-    // 먹이 생성 버튼
+    // 먹이 풀 사용
     public void AddFood(Vector3 worldPosition)
     {
         // 풀에서 먹이 가져옴
