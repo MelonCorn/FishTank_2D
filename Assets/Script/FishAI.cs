@@ -282,9 +282,6 @@ public class FishAI : MonoBehaviour
     // 먹이 받아 먹음 (Food 에서 호출)
     public void EatFood(int exp, int fill)
     {
-        // 배고픔 상태 아니면 무시
-        if (Hungry() == false) return;
-
         // 성장 상태 아니면
         // 성장 경험치 증가
         if(isGrowth == false) IncreaseEXP(exp);
@@ -374,7 +371,7 @@ public class FishAI : MonoBehaviour
     }
 
     // 배고픔 상태 체크
-    bool Hungry()
+    public bool Hungry()
     {
         // 허기 일정 이상이면 배고픔 상태
         bool isHungry = currentHungry >= fishData.maxHungry * 0.7f;

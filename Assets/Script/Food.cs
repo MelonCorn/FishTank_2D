@@ -56,7 +56,8 @@ public class Food : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 먹혔으면 돌아가, 한 번에 여러 물고기 먹이기 방지
+        // 먹힌 상태면 무시.
+        // 한 번에 여러 물고기 섭취 방지
         if (isEaten == true) return;
 
         // Fish 태그
@@ -65,6 +66,9 @@ public class Food : MonoBehaviour
             // FishAI 컴포넌트 있으면
             if (collision.TryGetComponent<FishAI>(out FishAI fish))
             {
+                // 배고픔 상태 아니면 무시
+                if (fish.Hungry() == false) return;
+
                 // 먹힘 체크
                 isEaten = true;
 
