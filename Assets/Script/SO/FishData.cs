@@ -5,10 +5,12 @@ public class FishData : ScriptableObject
 {
     [Header("이름")]
     public string fishName;
+    [Header("비용")]
+    public int cost = 10;
     [Header("이동 속도")]
     public float moveSpeed = 2f;
     [Header("이동 대기 시간")]
-    public float minWaitTime = 2f;
+    public float minWaitTime = 0.1f;
     public float maxWaitTime = 2f;
     [Header("추적 속도 배율")]
     public float chaseMultiplier = 2f;

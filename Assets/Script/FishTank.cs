@@ -89,6 +89,8 @@ public class FishTank : MonoBehaviour
     // 물고기 풀 사용
     public void AddFish(Vector3 worldPosition)
     {
+        if (GameManager.Instance.TryPurchase(fishData[currentFish].cost) == false) return;
+
         // 풀에서 물고기 가져옴
         FishAI newFish = fishPool.Get();
 

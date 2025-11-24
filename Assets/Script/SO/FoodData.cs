@@ -6,7 +6,7 @@ public class FoodData : ScriptableObject
     [Header("이름")]
     public string foodName;
     [Header("비용")]
-    public int price = 1;
+    public int cost = 1;
     [Header("성장 경험치")]
     public int exp = 1;
     [Header("감소 허기")]

@@ -9,21 +9,31 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI foodTypeText;      // 현재 먹이 텍스트
     [SerializeField] TextMeshProUGUI fishCountText;     // 물고기 수 텍스트
     [SerializeField] TextMeshProUGUI fishTypeText;      // 현재 물고기 텍스트
+    [SerializeField] TextMeshProUGUI moneyText;         // 재화 텍스트
 
 
     void Awake()
     {
         Instance = this;
     }
-    
-    
+
+    private void Start()
+    {
+        // 재화 변경 알림 구독
+        GameManager.Instance.OnMoneyChanged += UpdateMoneyUI;
+    }
+    private void OnDisable()
+    {
+        GameManager.Instance.OnMoneyChanged -= UpdateMoneyUI;
+    }
+
     // ---------------------------------------------------------
 
     //  현재 상태 텍스트 갱신 InputManager
-    public void UpdateStateUI(string fullText)
+    public void UpdateStateUI(string state)
     {
         if (currentStateText != null)
-            currentStateText.text = fullText;
+            currentStateText.text = $"Current Action : {state}";
     }
 
     // ---------------------------------------------------------
@@ -49,6 +59,16 @@ public class UIManager : MonoBehaviour
     {
         if (foodTypeText != null)
             foodTypeText.text = $"Current Food : {foodName}";
+    }
+
+
+    // ---------------------------------------------------------
+
+    // 재화 갱신 자동 호출
+    private void UpdateMoneyUI(int money)
+    {
+        if (moneyText != null)
+            moneyText.text = $"Money : {money:N0}";
     }
 
 }

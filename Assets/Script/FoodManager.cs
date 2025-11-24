@@ -71,7 +71,7 @@ public class FoodManager : MonoBehaviour
     public void AddFood(Vector3 worldPosition)
     {
         // 비용 체크 
-        // 추가추가추가추가
+        if (GameManager.Instance.TryPurchase(foodData[currentFood].cost) == false) return;
 
         // 풀에서 먹이 가져옴
         Food newFood = foodPool.Get();
