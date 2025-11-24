@@ -9,32 +9,38 @@ public class GameManager : MonoBehaviour
     public event Action<int> OnHappinessChanged;// 행복도 변경 알림
     public event Action<int> OnMoneyChanged;    // 재화 변경 알림
 
-    int happiness;        // 어항 행복도
-    int money = 100;      // 재화
+
+    int happiness;               // 어항 행복도
+    int money = 1000;            // 재화
+
+
     public int Happiness
     {
         get => happiness;
         private set
         {
             happiness = value;
-            // 행복도 변경 알림 방송
             OnHappinessChanged?.Invoke(happiness);
         }
-    }
+    }   // 행복도 변경 알림
     public int Money
     {
         get => money;
         private set
         {
             money = value;
-            // 재화 변경 알림 방송
             OnMoneyChanged?.Invoke(money);
         }
-    }
+    }       // 재화 변경 알림
+
+
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
     private void Start()

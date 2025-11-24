@@ -25,24 +25,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SpawnFish",
-                    "type": "Button",
-                    "id": "0629cdf5-10db-4965-b6fa-65d520a56d6b",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SpawnFood",
-                    "type": "Button",
-                    "id": "bd0ccc30-541b-454c-a04e-fbd493e63b91",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "ChangeFood",
                     "type": "Value",
                     "id": "f4e84031-eda0-4455-a52e-c29080e62c5d",
@@ -50,6 +32,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "OpenShop",
+                    "type": "Button",
+                    "id": "7fb9f2f6-a88c-4e97-94db-864fecea141e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenFood",
+                    "type": "Button",
+                    "id": "a2d57e1f-a6c4-47d8-a998-58e6fc1a6996",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -61,28 +61,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interaction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "07a71c4c-78c6-43c7-9b59-465980a338b6",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SpawnFood",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6ed88b58-8c6c-47bf-b8a8-216fd19824f9",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SpawnFish",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -105,6 +83,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChangeFood",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3f52b76-259d-4337-a5cd-816c53dad94d",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenShop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2ba0fb7-c864-4a78-9202-e4c9608ba8e8",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenFood",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

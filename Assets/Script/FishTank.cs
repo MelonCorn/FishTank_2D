@@ -8,20 +8,21 @@ public class FishTank : MonoBehaviour
 
     private int currentFish;                       // 현재 선택 물고기
 
-    private float _padding = 0.5f;                  // 화면 끝에서 안쪽으로 여백  
+    private float padding = 0.5f;                  // 화면 끝에서 안쪽으로 여백  
 
-    private Vector2 _minBounds;                     // 화면 최소 좌표 (왼쪽 아래)
-    private Vector2 _maxBounds;                     // 화면 최대 좌표 (오른쪽 위)
+    private Vector2 minBounds;                     // 화면 최소 좌표 (왼쪽 아래)
+    private Vector2 maxBounds;                     // 화면 최대 좌표 (오른쪽 위)
 
     [SerializeField] FishAI fishPrefab;            // 물고기 프리팹
     [SerializeField] FishData[] fishData;          // 물고기 데이터 목록
     [SerializeField] int defaultSize = 100;        // 초기화 수
 
 
-    public float Padding => _padding;
-    public Vector2 MinBounds => _minBounds;
-    public Vector2 MaxBounds => _maxBounds;
+    public float Padding => padding;
+    public Vector2 MinBounds => minBounds;
+    public Vector2 MaxBounds => maxBounds;
 
+    public FishData[] FishData => fishData;
 
 
     void Awake()
@@ -34,6 +35,8 @@ public class FishTank : MonoBehaviour
         // 화면 경계 설정
         SetCameraBounds();
     }
+
+    #region 풀링
 
     // 풀 초기화
     void InitPool()
@@ -87,39 +90,24 @@ public class FishTank : MonoBehaviour
         SetFishCountText();
     }
 
+    #endregion
+
     // 물고기 풀 사용
-    public void AddFish(Vector3 worldPosition)
+    public void AddFish(int index)
     {
-        if (GameManager.Instance.TryPurchase(fishData[currentFish].cost) == false) return;
+        if (GameManager.Instance.TryPurchase(fishData[index].cost) == false) return;
 
         // 풀에서 물고기 가져옴
         FishAI newFish = fishPool.Get();
 
         // 물고기 위치 지정
-        newFish.transform.position = worldPosition;
+        newFish.transform.position = new Vector2(Random.Range(minBounds.x, maxBounds.x),Random.Range(minBounds.y, maxBounds.y));
 
         // 선택된 물고기 데이터로 초기화
-        newFish.InitFishType(fishData[currentFish]);
+        newFish.InitFishType(fishData[index]);
 
         // 물고기 수 텍스트
         SetFishCountText();
-    }
-
-    // 물고기 변경
-    public void ChangeFish(int dir)
-    {
-        currentFish += dir;
-
-        // 0 미만이면 마지막으로
-        if (currentFish < 0)
-            currentFish = fishData.Length - 1;
-
-        // 마지막 이상이면 0 으로
-        else if (currentFish >= fishData.Length)
-            currentFish = 0;
-
-        // 현재 선택된 물고기 텍스트 갱신
-        UIManager.Instance.UpdateFishType(fishData[currentFish].fishName);
     }
 
     // 물고기 수 갱신
@@ -141,9 +129,9 @@ public class FishTank : MonoBehaviour
         float horzExtent = vertExtent * mainCam.aspect;
 
         // 경계값 설정 (padding만큼 안쪽으로 들임)
-        _minBounds = new Vector2(mainCam.transform.position.x - horzExtent + Padding,
+        minBounds = new Vector2(mainCam.transform.position.x - horzExtent + Padding,
                                 mainCam.transform.position.y - vertExtent + Padding);
-        _maxBounds = new Vector2(mainCam.transform.position.x + horzExtent - Padding,
+        maxBounds = new Vector2(mainCam.transform.position.x + horzExtent - Padding,
                                 mainCam.transform.position.y + vertExtent - Padding);
     }
 

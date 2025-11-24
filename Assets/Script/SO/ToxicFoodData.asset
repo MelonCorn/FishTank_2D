@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ToxicFoodData
   m_EditorClassIdentifier: Assembly-CSharp::FoodData
   foodName: Toxic
-  price: 15
+  cost: 15
   exp: 0
   fill: -100
   lifeTime: 30

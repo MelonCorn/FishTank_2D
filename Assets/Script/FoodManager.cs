@@ -1,20 +1,41 @@
 using UnityEngine;
 using UnityEngine.Pool;
 using System.Collections.Generic;
+using System;
 
 public class FoodManager : MonoBehaviour
 {
-    private ObjectPool<Food> foodPool;            // 먹이 풀
+    private ObjectPool<Food> foodPool;              // 먹이 풀
 
-    [SerializeField] Food foodPrefab;             // 먹이 프리팹
-    [SerializeField] FoodData[] foodData;         // 먹이 데이터 목록
-    [SerializeField] int defaultSize = 20;        // 초기화 수
+    public event Action<int> OnFoodChanged;         // 먹이 변경 시
+
+    [SerializeField] Food foodPrefab;               // 먹이 프리팹
+    [SerializeField] FoodData[] foodData;           // 먹이 데이터 목록
+    [SerializeField] int defaultSize = 20;          // 초기화 수
 
     private int currentFood = 0;
 
+    public FoodData[] FoodData => foodData;
+
+    private int CurrentFood
+    {
+        set
+        {
+            currentFood = value;
+            OnFoodChanged?.Invoke(currentFood);
+        }
+    }
+
     void Awake()
     {
+        // 풀 초기화
         InitPool();
+    }
+
+    private void Start()
+    {
+        // 처음엔 0번 선택
+        OnFoodChanged(0);
     }
 
     #region 풀링
@@ -86,17 +107,29 @@ public class FoodManager : MonoBehaviour
     // 먹이 변경
     public void ChangeFood(int dir)
     {
-        currentFood += dir;
+        int current = currentFood;
+
+        current += dir;
 
         // 0 미만이면 마지막으로
-        if (currentFood < 0)
-            currentFood = foodData.Length - 1;
+        if (current < 0)
+            current = foodData.Length - 1;
 
         // 마지막 이상이면 0 으로
-        else if (currentFood >= foodData.Length)
-            currentFood = 0;
+        else if (current >= foodData.Length)
+            current = 0;
+
+        // 적용 후 알림
+        CurrentFood = current;
 
         // 선택 먹이 텍스트 갱신
-        UIManager.Instance.UpdateFoodType(foodData[currentFood].foodName);
+        UIManager.Instance.UpdateFoodType(foodData[current].foodName);
+    }
+
+    // 버튼 클릭 시 호출될 함수
+    // 선택 먹이 변경
+    public void OnFoodClick(int index)
+    {
+        CurrentFood = index;
     }
 }

@@ -4,9 +4,8 @@ using UnityEngine.InputSystem;
 
 public enum InputState
 {
-    None,
     SpawnFood,
-    SpawnFish,
+    Erase,
 }
 
 
@@ -15,40 +14,40 @@ public class InputManager : MonoBehaviour
     [SerializeField] FishTank fishTank;
     [SerializeField] FoodManager foodManager;
 
-    private InputState _currentState = InputState.None;   // 현재 버튼
-    public InputState CurrentState => _currentState;
+    private InputState currentState = InputState.SpawnFood;   // 현재 버튼
+    public InputState CurrentState => currentState;
 
 
+    // 먹이 소환 버튼
     public void OnSpawnFood(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
-            _currentState = InputState.SpawnFood;
-            SetCurrentStateText();
+            currentState = InputState.SpawnFood;
         }
     }
-    public void OnSpawnFish(InputAction.CallbackContext ctx)
+    // 상점 패널 버튼
+    public void OnOpenShop(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
-            _currentState = InputState.SpawnFish;
-            SetCurrentStateText();
+
         }
     }
-    public void OnCancel(InputAction.CallbackContext ctx)
+    // 먹이 패널 버튼
+    public void OnOpenFood(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
-            _currentState = InputState.None;
-            SetCurrentStateText();
+
         }
     }
     public void OnChangeType(InputAction.CallbackContext ctx)
     {
-        // 기본 상태라면 무시
-        if (_currentState == InputState.None) return;
+        // 먹이 상태 아니면 무시
+        if (currentState != InputState.SpawnFood) return;
 
-        // 휠이 굴릴 때만 실행
+        // 휠이 굴릴 때 실행
         if (ctx.performed)
         {
             // 휠 값  위+ / 아래-
@@ -61,15 +60,7 @@ public class InputManager : MonoBehaviour
             int scrollDir = (scrollValue > 0) ? 1 : -1;
 
             // 타입 변경
-            switch (_currentState)
-            {
-                case InputState.SpawnFood:
-                    foodManager.ChangeFood(scrollDir);
-                    break;
-                case InputState.SpawnFish:
-                    fishTank.ChangeFish(scrollDir);
-                    break;
-            }
+            foodManager.ChangeFood(scrollDir);
         }
     }
 
@@ -78,7 +69,7 @@ public class InputManager : MonoBehaviour
         if (ctx.started)
         {
             // UI 위에 마우스가 있다면 클릭 무시
-            //if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (EventSystem.current.IsPointerOverGameObject()) return;
 
             // 마우스 위치
             Vector2 screenPosition = Mouse.current.position.ReadValue();
@@ -90,13 +81,10 @@ public class InputManager : MonoBehaviour
             wolrdPosition.z = 0f;
 
 
-            switch (_currentState)
+            switch (currentState)
             {
                 case InputState.SpawnFood:
                     OnSpawnFood(wolrdPosition);
-                    break;
-                case InputState.SpawnFish:
-                    OnSpawnFish(wolrdPosition);
                     break;
             }
 
@@ -108,16 +96,4 @@ public class InputManager : MonoBehaviour
     {
         foodManager.AddFood(worldPosition);
     }
-    // 물고기
-    void OnSpawnFish(Vector3 worldPosition)
-    {
-        fishTank.AddFish(worldPosition);
-    }
-
-    // 상태 텍스트 갱신
-    void SetCurrentStateText()
-    {
-        UIManager.Instance.UpdateStateUI(_currentState.ToString());
-    }
-
 }

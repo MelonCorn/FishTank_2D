@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PremiumFoodData
   m_EditorClassIdentifier: Assembly-CSharp::FoodData
   foodName: Premium
-  price: 10
+  cost: 25
   exp: 30
   fill: 70
   lifeTime: 10
