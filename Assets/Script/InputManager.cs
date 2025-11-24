@@ -18,8 +18,6 @@ public class InputManager : MonoBehaviour
     [SerializeField] FishTank fishTank;
     [SerializeField] FoodManager foodManager;
 
-    [SerializeField] TextMeshProUGUI currentStateText;
-
     private InputState _currentState = InputState.None;   // 현재 버튼
     public InputState CurrentState => _currentState;
 
@@ -119,10 +117,10 @@ public class InputManager : MonoBehaviour
         fishTank.AddFish(worldPosition);
     }
 
-    
+    // 상태 텍스트 갱신
     void SetCurrentStateText()
     {
-        currentStateText.text = "Current Action : " + _currentState.ToString();
+        UIManager.Instance.UpdateStateUI(_currentState.ToString());
     }
 
 }

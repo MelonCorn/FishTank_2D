@@ -10,7 +10,6 @@ public class FoodManager : MonoBehaviour
     [SerializeField] Food foodPrefab;             // 먹이 프리팹
     [SerializeField] FoodData[] foodData;         // 먹이 데이터 목록
     [SerializeField] int defaultSize = 20;        // 초기화 수
-    [SerializeField] TextMeshProUGUI foodTypeText;// 현재 먹이 텍스트
 
     private int currentFood = 0;
 
@@ -98,7 +97,7 @@ public class FoodManager : MonoBehaviour
         else if (currentFood >= foodData.Length)
             currentFood = 0;
 
-        // 현재 선택된 먹이 텍스트 갱신
-        foodTypeText.text = "Current Food : " + foodData[currentFood].foodName;
+        // 선택 먹이 텍스트 갱신
+        UIManager.Instance.UpdateFoodType(foodData[currentFood].foodName);
     }
 }
