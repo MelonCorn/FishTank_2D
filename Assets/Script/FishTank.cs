@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
-using UnityEngine.UI;
 
 public class FishTank : MonoBehaviour
 {
@@ -43,7 +41,7 @@ public class FishTank : MonoBehaviour
         // 풀 생성
         fishPool = new ObjectPool<FishAI>(
             createFunc: CreateNewFish,
-            actionOnGet: (fish) => fish.gameObject.SetActive(true),
+            actionOnGet: (fish) => fish.gameObject.SetActive(true) ,
             actionOnRelease: (fish) => fish.gameObject.SetActive(false),
             actionOnDestroy: (fish) => Destroy(fish),
             defaultCapacity: defaultSize
@@ -74,6 +72,9 @@ public class FishTank : MonoBehaviour
         FishAI fish = Instantiate(fishPrefab, transform);
 
         fish.Init(this);
+
+        // 기본 물고기
+        fish.InitFishType(fishData[0]);
 
         return fish;
     }

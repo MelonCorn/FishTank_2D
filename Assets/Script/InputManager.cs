@@ -1,9 +1,6 @@
-using TMPro;
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using static UnityEngine.Rendering.DebugUI;
 
 public enum InputState
 {

@@ -1586,7 +1586,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d73fd0ca87c26bb45a7af79af9710f4c, type: 2}
   - {fileID: 11400000, guid: 3600c286d48530f47bced98795461d46, type: 2}
   - {fileID: 11400000, guid: b29cc07271089d848ac82f17f0c78062, type: 2}
-  defaultSize: 100
+  defaultSize: 1
 --- !u!4 &1731404367
 Transform:
   m_ObjectHideFlags: 0
@@ -2166,7 +2166,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e4278f4a247ee545bc188cdf3e70701, type: 2}
   - {fileID: 11400000, guid: a1b56c5402ae9334996a675991edbd16, type: 2}
   - {fileID: 11400000, guid: c0179eff9a061fa4dbaaa932bec463e6, type: 2}
-  defaultSize: 20
+  defaultSize: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

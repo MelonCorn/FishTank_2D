@@ -28,7 +28,10 @@ public class FishData : ScriptableObject
     public int requireExp = 20;
     [Header("감지 먹이 레이어")]
     public LayerMask detectFoodLayer;
-    [Header("스프라이트")]
+    [Header("물고기 스프라이트")]
     public Sprite babySprite;         // 치어 스프라이트
     public Sprite growthSprite;       // 성어 스프라이트
+    [Header("상태 스프라이트")]
+    public Sprite hungrySprite;       // 배고픔 스프라이트
+    public Sprite deadSprite;         // 사망 스프라이트
 }

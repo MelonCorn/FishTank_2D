@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Pool;
 using System.Collections.Generic;
-using TMPro;
 
 public class FoodManager : MonoBehaviour
 {

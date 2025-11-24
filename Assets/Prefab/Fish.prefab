@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1671663248283000969, guid: ef777b3148ba2e74088c5b6c00eaf6b5, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_Size: {x: 0.25, y: 0.15625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3670726784446051789
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9916224d7f088fb4a960bc6893837eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishAI
-  hungryIcon: {fileID: 1760665223366047229}
+  stateIcon: {fileID: 3497697548009793682}
 --- !u!50 &7311157663172121162
 Rigidbody2D:
   serializedVersion: 5

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: NormalFishData
   m_EditorClassIdentifier: Assembly-CSharp::FishData
   fishName: Normal
+  cost: 5
   moveSpeed: 2
   minWaitTime: 0.1
   maxWaitTime: 2
@@ -28,3 +29,5 @@ MonoBehaviour:
     m_Bits: 128
   babySprite: {fileID: -1671606771195562379, guid: 2c761e766494cc948b5ff44d780d1e46, type: 3}
   growthSprite: {fileID: 383178366684351716, guid: ea6ec02b3eaa7a0439c128d79a96877d, type: 3}
+  hungrySprite: {fileID: -1671663248283000969, guid: ef777b3148ba2e74088c5b6c00eaf6b5, type: 3}
+  deadSprite: {fileID: -7411738981383325484, guid: c5c4dba40ead1694e9df502e11936344, type: 3}

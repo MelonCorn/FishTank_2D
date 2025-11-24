@@ -17,14 +17,16 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    private void OnEnable()
     {
         // 재화 변경 알림 구독
         GameManager.Instance.OnMoneyChanged += UpdateMoneyUI;
     }
     private void OnDisable()
     {
-        GameManager.Instance.OnMoneyChanged -= UpdateMoneyUI;
+        // 재화 변경 알림 구독 해지
+        if(GameManager.Instance != null)
+            GameManager.Instance.OnMoneyChanged -= UpdateMoneyUI;
     }
 
     // ---------------------------------------------------------

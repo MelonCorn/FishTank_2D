@@ -11,12 +11,11 @@ public enum FishState
 
 public class FishAI : MonoBehaviour
 {
-    [SerializeField] GameObject hungryIcon;          // 배고픔 아이콘
-
     private FishTank fishTank;                       // 어항 
     private FishData fishData;                       // 물고기 정보
 
-    private SpriteRenderer spriteRenderer;           // 스프라이트 렌더러
+    private SpriteRenderer spriteRenderer;           // 물고기
+    [SerializeField] SpriteRenderer stateIcon;       // 상태 아이콘
 
     private FishState currentState = FishState.Idle; // 현재 상태
 
@@ -33,8 +32,13 @@ public class FishAI : MonoBehaviour
     private WaitForSeconds detectFoodDelay;          // 감지 간격
 
     private WaitForSeconds hungerDelay;              // 허기 간격
-    private WaitUntil untilHungry;
+    private WaitUntil untilHungry;                   // 배고픔 상태 체크
 
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
 
     // 생성 시 초기화
@@ -57,19 +61,14 @@ public class FishAI : MonoBehaviour
         // 치어 이미지 적용
         spriteRenderer.sprite = fishData.babySprite;
 
-        // 활성화 시 Idle 상태
-        ChangeState(FishState.Idle);
-
-        // 허기 코루틴 시작
-        // 살아있는 동안 계속 돌아가므로 안 담아도 됨
-        StartCoroutine(Hunger());
-
-    }
-
-
-    private void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (gameObject.activeInHierarchy)
+        {
+            // Idle 상태
+            ChangeState(FishState.Idle);
+            // 허기 코루틴 시작
+            // 살아있는 동안 계속 돌아가므로 안 담아도 됨
+            StartCoroutine(Hunger());
+        }
     }
 
     private void OnEnable()
@@ -77,6 +76,7 @@ public class FishAI : MonoBehaviour
         currentHungry = 0;
         currentExp = 0;
 
+        // 랜덤 색상
         spriteRenderer.color = new Color(Random.value, Random.value, Random.value, 1f);
     }
 
@@ -135,6 +135,14 @@ public class FishAI : MonoBehaviour
                 break;
 
             case FishState.Dead:
+                // 사망 아이콘
+                stateIcon.sprite = fishData.deadSprite;
+                // 아이콘 활성화
+                stateIcon.gameObject.SetActive(true);
+                // 하얗게..
+                spriteRenderer.color = Color.white;
+                // 하강 후 반납
+                StartCoroutine(Sink());
                 break;
         }
     }
@@ -263,10 +271,20 @@ public class FishAI : MonoBehaviour
     #region Dead
 
 
-    // 사망
-    void Die()
+    // 사망 후 일정시간 가라 앉음
+    IEnumerator Sink()
     {
-        ChangeState(FishState.Dead);
+        float timer = 0f;
+
+        while (timer < 2f)
+        {
+            timer += Time.deltaTime;
+
+            // 아래로 이동
+            transform.position += Vector3.down * 0.5f * Time.deltaTime;
+
+            yield return null; // 다음 프레임까지 대기
+        }
 
         // 풀 반납
         fishTank.ReturnToPool(this);
@@ -329,7 +347,7 @@ public class FishAI : MonoBehaviour
         // 잘못 먹어서 허기 최대 넘어가면 즉시 사망
         else if (currentHungry >= fishData.maxHungry)
         {
-            Die();
+            ChangeState(FishState.Dead);
             return false;
         }
 
@@ -362,8 +380,8 @@ public class FishAI : MonoBehaviour
             if (currentHungry >= fishData.maxHungry)
             {
                 currentHungry = fishData.maxHungry;
-                // 사망
-                Die();
+                // 사망 상태로 전환
+                ChangeState(FishState.Dead);
                 //코루틴 종료
                 yield break;
             }
@@ -376,9 +394,12 @@ public class FishAI : MonoBehaviour
         // 허기 일정 이상이면 배고픔 상태
         bool isHungry = currentHungry >= fishData.maxHungry * 0.7f;
 
-        // 배고픔 상태에 따라 아이콘 상태 변경
-        if (hungryIcon.activeSelf != isHungry)
-            hungryIcon.SetActive(isHungry);
+       // 배고픔 상태면 아이콘 변경
+       if (isHungry == true)
+           stateIcon.sprite = fishData.hungrySprite;
+       
+       // 배고픔 상태에 따라 아이콘 활성화
+       stateIcon.gameObject.SetActive(isHungry);
 
         return isHungry;
     }
