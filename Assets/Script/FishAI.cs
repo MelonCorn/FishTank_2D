@@ -276,12 +276,12 @@ public class FishAI : MonoBehaviour
     {
         float timer = 0f;
 
-        while (timer < 2f)
+        while (timer < 3f)
         {
             timer += Time.deltaTime;
 
             // 아래로 이동
-            transform.position += Vector3.down * 0.5f * Time.deltaTime;
+            transform.position += Vector3.down * 0.3f * Time.deltaTime;
 
             yield return null; // 다음 프레임까지 대기
         }
