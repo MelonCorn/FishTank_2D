@@ -11,6 +11,7 @@ public enum FishState
 
 public class FishAI : MonoBehaviour
 {
+    [SerializeField] GameObject hungryIcon;          // 배고픔 아이콘
 
     private FishTank fishTank;                       // 어항 
     private FishData fishData;                       // 물고기 정보
@@ -32,6 +33,7 @@ public class FishAI : MonoBehaviour
     private WaitForSeconds detectFoodDelay;          // 감지 간격
 
     private WaitForSeconds hungerDelay;              // 허기 간격
+    private WaitUntil untilHungry;
 
 
 
@@ -39,6 +41,7 @@ public class FishAI : MonoBehaviour
     public void Init(FishTank fishTank)
     {
         this.fishTank = fishTank;
+        untilHungry = new WaitUntil(() => Hungry());
     }
 
     // 활성화 시 데이터 초기화
@@ -73,6 +76,8 @@ public class FishAI : MonoBehaviour
     {
         currentHungry = 0;
         currentExp = 0;
+
+        spriteRenderer.color = new Color(Random.value, Random.value, Random.value, 1f);
     }
 
     void Update()
@@ -135,29 +140,6 @@ public class FishAI : MonoBehaviour
     }
 
 
-    // 허기
-    private IEnumerator Hunger()
-    {
-        // 사망 상태가 아니면 루프
-        while(currentState != FishState.Dead)
-        {
-            // 허기 간격만큼 대기
-            yield return hungerDelay;
-
-            // 현재 허기 증가
-            currentHungry += fishData.hungerAmount;
-
-            // 현재 허기가 최대 허기 이상이면
-            if(currentHungry >= fishData.maxHungry)
-            {
-                currentHungry = fishData.maxHungry;
-                // 사망
-                Die();
-                //코루틴 종료
-                yield break;
-            }
-        }
-    }
 
 
     // -------------------------------------------
@@ -217,6 +199,9 @@ public class FishAI : MonoBehaviour
         // 현재 상태 Idle 인 동안 반복
         while (currentState == FishState.Idle)
         {
+            // 배고픔 상태까지 대기
+            yield return untilHungry;
+
             // 주변 반경 안에 Food 레이어 물체 감지 시도
             Collider2D food = Physics2D.OverlapCircle(transform.position, fishData.detectRange, fishData.detectFoodLayer);
 
@@ -295,18 +280,21 @@ public class FishAI : MonoBehaviour
     #region Food
 
     // 먹이 받아 먹음 (Food 에서 호출)
-    public void EatFood(int exp)
+    public void EatFood(int exp, int fill)
     {
-        // 먹이 추적 상태 아니면
-        // return
-        if (currentState != FishState.ChaseFood) return;
+        // 배고픔 상태 아니면 무시
+        if (Hungry() == false) return;
 
         // 성장 상태 아니면
-        // 경험치 증가
+        // 성장 경험치 증가
         if(isGrowth == false) IncreaseEXP(exp);
 
         // 허기 감소
-        DecreaseHungry();
+        bool isAlive = DecreaseHungry(fill);
+
+        // 먹고 살았는지 체크
+        // 죽었으면 무시
+        if (isAlive == false) return;
 
         // 먹이 없어져서 다시 한가해짐
         ChangeState(FishState.Idle);
@@ -329,14 +317,75 @@ public class FishAI : MonoBehaviour
     }
 
     // 허기 감소
-    void DecreaseHungry()
+    // 생존 여부 반환
+    bool DecreaseHungry(int amount)
     {
-        currentHungry -= 30;
+        currentHungry -= amount;
+
+        // 배고픔 상태 체크
+        Hungry();
 
         // 0 이하면 0 고정
         if (currentHungry <= 0)
             currentHungry = 0;
+
+        // 잘못 먹어서 허기 최대 넘어가면 즉시 사망
+        else if (currentHungry >= fishData.maxHungry)
+        {
+            Die();
+            return false;
+        }
+
+        return true;
     }
+
+    #endregion
+
+    // -------------------------------------------
+
+    #region Hunger
+
+
+    // 허기
+    private IEnumerator Hunger()
+    {
+        // 사망 상태가 아니면 루프
+        while (currentState != FishState.Dead)
+        {
+            // 허기 간격만큼 대기
+            yield return hungerDelay;
+
+            // 현재 허기 증가
+            currentHungry += fishData.hungerAmount;
+
+            // 배고픔 상태 체크
+            Hungry();
+
+            // 현재 허기가 최대 허기 이상이면
+            if (currentHungry >= fishData.maxHungry)
+            {
+                currentHungry = fishData.maxHungry;
+                // 사망
+                Die();
+                //코루틴 종료
+                yield break;
+            }
+        }
+    }
+
+    // 배고픔 상태 체크
+    bool Hungry()
+    {
+        // 허기 일정 이상이면 배고픔 상태
+        bool isHungry = currentHungry >= fishData.maxHungry * 0.7f;
+
+        // 배고픔 상태에 따라 아이콘 상태 변경
+        if (hungryIcon.activeSelf != isHungry)
+            hungryIcon.SetActive(isHungry);
+
+        return isHungry;
+    }
+
 
     #endregion
 

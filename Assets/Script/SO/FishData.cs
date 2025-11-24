@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "FishData", menuName = "Scriptable Objects/FishData")]
 public class FishData : ScriptableObject
 {
+    [Header("이름")]
+    public string fishName;
     [Header("이동 속도")]
     public float moveSpeed = 2f;
     [Header("이동 대기 시간")]

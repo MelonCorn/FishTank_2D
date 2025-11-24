@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ae7fbdfda2c2140961cd0a0cafb1f8, type: 3}
-  m_Name: NormalFoodData
+  m_Name: ToxicFoodData
   m_EditorClassIdentifier: Assembly-CSharp::FoodData
-  foodName: Normal
-  price: 2
-  exp: 1
-  fill: 25
-  lifeTime: 10
-  sinkSpeed: 0.5
+  foodName: Toxic
+  price: 15
+  exp: 0
+  fill: -100
+  lifeTime: 30
+  sinkSpeed: 0.1
   layer:
     serializedVersion: 2
     m_Bits: 128
-  sprite: {fileID: 8001177676779995881, guid: 889a90f3fdeabbd40a0c21a1d39f1ff7, type: 3}
+  sprite: {fileID: 8980552705043034508, guid: 3d9a8470eba4b2d4ca1b98ae5c4d5bb2, type: 3}

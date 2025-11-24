@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Pool;
 using System.Collections.Generic;
+using TMPro;
 
 public class FoodManager : MonoBehaviour
 {
@@ -9,11 +10,16 @@ public class FoodManager : MonoBehaviour
     [SerializeField] Food foodPrefab;             // 먹이 프리팹
     [SerializeField] FoodData[] foodData;         // 먹이 데이터 목록
     [SerializeField] int defaultSize = 20;        // 초기화 수
+    [SerializeField] TextMeshProUGUI foodTypeText;// 현재 먹이 텍스트
+
+    private int currentFood = 0;
 
     void Awake()
     {
         InitPool();
     }
+
+    #region 풀링
     // 풀 초기화
     void InitPool()
     {
@@ -60,17 +66,39 @@ public class FoodManager : MonoBehaviour
     {
         foodPool.Release(fish);
     }
+    #endregion
 
     // 먹이 풀 사용
     public void AddFood(Vector3 worldPosition)
     {
+        // 비용 체크 
+        // 추가추가추가추가
+
         // 풀에서 먹이 가져옴
         Food newFood = foodPool.Get();
 
         // 먹이 위치 지정
         newFood.transform.position = worldPosition;
 
-        // 데이터 초기화
-        newFood.InitFoodType(foodData[0]);
+        // 선택된 먹이 데이터로 초기화
+        newFood.InitFoodType(foodData[currentFood]);
+    }
+
+
+    // 먹이 변경
+    public void ChangeFood(int dir)
+    {
+        currentFood += dir;
+
+        // 0 미만이면 마지막으로
+        if (currentFood < 0)
+            currentFood = foodData.Length - 1;
+
+        // 마지막 이상이면 0 으로
+        else if (currentFood >= foodData.Length)
+            currentFood = 0;
+
+        // 현재 선택된 먹이 텍스트 갱신
+        foodTypeText.text = "Current Food : " + foodData[currentFood].foodName;
     }
 }

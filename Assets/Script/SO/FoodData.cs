@@ -3,8 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "FoodData", menuName = "Scriptable Objects/FoodData")]
 public class FoodData : ScriptableObject
 {
+    [Header("이름")]
+    public string foodName;
+    [Header("비용")]
+    public int price = 1;
     [Header("성장 경험치")]
-    public int exp = 20;
+    public int exp = 1;
+    [Header("감소 허기")]
+    public int fill = 25;
     [Header("수명 시간")]
     public float lifeTime = 10f;
     [Header("하강 속도")]

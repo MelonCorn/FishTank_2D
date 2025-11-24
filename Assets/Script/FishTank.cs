@@ -1,11 +1,14 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
-using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class FishTank : MonoBehaviour
 {
     private ObjectPool<FishAI> fishPool;           // 물고기 풀
+
+    private int currentFish;                       // 현재 선택 물고기
 
     private float padding = 0.5f;                  // 화면 끝에서 안쪽으로 여백  
 
@@ -17,6 +20,7 @@ public class FishTank : MonoBehaviour
     [SerializeField] int defaultSize = 100;        // 초기화 수
 
     [SerializeField] TextMeshProUGUI fishCountText;// 물고기 수 텍스트
+    [SerializeField] TextMeshProUGUI fishTypeText; // 현재 물고기 텍스트
 
 
     public float Padding => padding;
@@ -94,15 +98,31 @@ public class FishTank : MonoBehaviour
         // 물고기 위치 지정
         newFish.transform.position = worldPosition;
 
-        // 랜덤 물고기 데이터 선정
-        int rand = Random.Range(0, fishData.Length);
-
-        // 데이터 초기화
-        newFish.InitFishType(fishData[rand]);
+        // 선택된 물고기 데이터로 초기화
+        newFish.InitFishType(fishData[currentFish]);
 
         // 물고기 수 텍스트 갱신
         fishCountText.text = "Fish Count : " + fishPool.CountActive.ToString();
     }
+
+    // 물고기 변경
+    public void ChangeFish(int dir)
+    {
+        currentFish += dir;
+
+        // 0 미만이면 마지막으로
+        if (currentFish < 0)
+            currentFish = fishData.Length - 1;
+
+        // 마지막 이상이면 0 으로
+        else if (currentFish >= fishData.Length)
+            currentFish = 0;
+
+        // 현재 선택된 물고기 텍스트 갱신
+        fishTypeText.text = "Current Fish : " + fishData[currentFish].fishName;
+    }
+
+
 
     // 활동 범위 초기화
     void SetCameraBounds()

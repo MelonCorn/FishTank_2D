@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910f5d733b45de142b1c59743db826a4, type: 3}
-  m_Name: NormalFishData
+  m_Name: FatFishData
   m_EditorClassIdentifier: Assembly-CSharp::FishData
-  fishName: Normal
-  moveSpeed: 2
-  minWaitTime: 0.1
-  maxWaitTime: 2
-  chaseMultiplier: 2
-  detectRange: 1.5
+  fishName: Fat
+  moveSpeed: 1
+  minWaitTime: 0.5
+  maxWaitTime: 4
+  chaseMultiplier: 1.5
+  detectRange: 3
   foodDetectInterval: 0.1
-  hungerAmount: 1
-  hungerInterval: 1
-  maxHungry: 50
-  requireExp: 30
+  hungerAmount: 2
+  hungerInterval: 0.5
+  maxHungry: 150
+  requireExp: 70
   detectFoodLayer:
     serializedVersion: 2
     m_Bits: 128
-  babySprite: {fileID: -1671606771195562379, guid: 2c761e766494cc948b5ff44d780d1e46, type: 3}
-  growthSprite: {fileID: 383178366684351716, guid: ea6ec02b3eaa7a0439c128d79a96877d, type: 3}
+  babySprite: {fileID: -163317453185846821, guid: d4dd96e7f992943449ffce5c26ff002c, type: 3}
+  growthSprite: {fileID: 8151895571227466268, guid: 2bc33fc2b2deb154ba980819d3c5b75c, type: 3}

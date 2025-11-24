@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910f5d733b45de142b1c59743db826a4, type: 3}
-  m_Name: NormalFishData
+  m_Name: SpeedFishData
   m_EditorClassIdentifier: Assembly-CSharp::FishData
-  fishName: Normal
-  moveSpeed: 2
+  fishName: Speed
+  moveSpeed: 3
   minWaitTime: 0.1
   maxWaitTime: 2
   chaseMultiplier: 2
-  detectRange: 1.5
+  detectRange: 2
   foodDetectInterval: 0.1
-  hungerAmount: 1
+  hungerAmount: 2
   hungerInterval: 1
-  maxHungry: 50
-  requireExp: 30
+  maxHungry: 70
+  requireExp: 50
   detectFoodLayer:
     serializedVersion: 2
     m_Bits: 128
-  babySprite: {fileID: -1671606771195562379, guid: 2c761e766494cc948b5ff44d780d1e46, type: 3}
-  growthSprite: {fileID: 383178366684351716, guid: ea6ec02b3eaa7a0439c128d79a96877d, type: 3}
+  babySprite: {fileID: -4539525770715284387, guid: ca261d3f1a6fd9b42994f2799ce7b255, type: 3}
+  growthSprite: {fileID: -338751470667691772, guid: fa5ee4481db729b4cb43800e379c871c, type: 3}

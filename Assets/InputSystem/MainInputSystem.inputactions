@@ -16,9 +16,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SpawnFood",
+                    "name": "InteractionCancel",
                     "type": "Button",
-                    "id": "bd0ccc30-541b-454c-a04e-fbd493e63b91",
+                    "id": "8a641d2c-5c42-46c0-9174-51f37d8055d0",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -34,13 +34,22 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "InteractionCancel",
+                    "name": "SpawnFood",
                     "type": "Button",
-                    "id": "8a641d2c-5c42-46c0-9174-51f37d8055d0",
+                    "id": "bd0ccc30-541b-454c-a04e-fbd493e63b91",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeFood",
+                    "type": "Value",
+                    "id": "f4e84031-eda0-4455-a52e-c29080e62c5d",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -85,6 +94,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "InteractionCancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ccfdbe2-18c7-43b2-a4b7-235152e4f0aa",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeFood",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

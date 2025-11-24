@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 47c542297f97c754eaf7f36d7d5060f3
+guid: fa5ee4481db729b4cb43800e379c871c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1288086614542041651
-    second: Norma_Food_0
+      213: -338751470667691772
+    second: Speed_Growth_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Norma_Food_0
+      name: Speed_Growth_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 3
-        height: 3
+        width: 9
+        height: 2
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 332c6bb83f330e110800000000000000
-      internalID: 1288086614542041651
+      spriteID: 40906bb05538c4bf0800000000000000
+      internalID: -338751470667691772
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Norma_Food_0: 1288086614542041651
+      Speed_Growth_0: -338751470667691772
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

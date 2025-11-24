@@ -69,7 +69,7 @@ public class Food : MonoBehaviour
                 isEaten = true;
 
                 // π∞∞Ì±‚∞° ∏‘¿Ω
-                fish.EatFood(foodData.exp);
+                fish.EatFood(foodData.exp, foodData.fill);
 
                 // «Æ π›≥≥
                 Despawn();
