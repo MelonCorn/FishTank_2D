@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1483630174506424413}
   - component: {fileID: 6680735516508044936}
   - component: {fileID: 8431602668517086500}
+  - component: {fileID: 7311157663172121162}
   m_Layer: 8
   m_Name: Fish
   m_TagString: Fish
@@ -150,3 +151,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9916224d7f088fb4a960bc6893837eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishAI
+--- !u!50 &7311157663172121162
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670726784446051789}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: NormalFoodData
   m_EditorClassIdentifier: Assembly-CSharp::FoodData
   exp: 5
+  lifeTime: 10
+  sinkSpeed: 0.5
   layer:
     serializedVersion: 2
     m_Bits: 128

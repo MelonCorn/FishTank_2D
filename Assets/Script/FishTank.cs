@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class FishTank : MonoBehaviour
 {
-
     private ObjectPool<FishAI> fishPool;           // 물고기 풀
 
     private float padding = 0.5f;                  // 화면 끝에서 안쪽으로 여백  

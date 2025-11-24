@@ -35,6 +35,15 @@ public class Food : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    private void Update()
+    {
+        // ¾Æ·¡·Î °¡¶ó¾ÉÀ½
+        transform.Translate(Vector3.down * foodData.sinkSpeed * Time.deltaTime);
+    }
+
+
+
+
     // Ç® ¹Ý³³
     private void Despawn()
     {
@@ -65,6 +74,11 @@ public class Food : MonoBehaviour
                 // Ç® ¹Ý³³
                 Despawn();
             }
+        }
+        else if (collision.CompareTag("Environment"))
+        {
+            // Ç® ¹Ý³³
+            Despawn();
         }
     }
 

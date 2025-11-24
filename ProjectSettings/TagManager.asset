@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Food
   - Fish
+  - Environment
   layers:
   - Default
   - TransparentFX
