@@ -6,6 +6,7 @@ public enum InputState
 {
     SpawnFood,
     Erase,
+    MiniGame,
 }
 
 
@@ -13,6 +14,7 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] FishTank fishTank;
     [SerializeField] FoodManager foodManager;
+    [SerializeField] SidePanel sideMenu;
 
     private InputState currentState = InputState.SpawnFood;   // 현재 버튼
     public InputState CurrentState => currentState;
@@ -31,7 +33,7 @@ public class InputManager : MonoBehaviour
     {
         if (ctx.started)
         {
-
+            sideMenu.OnClickShopButton();
         }
     }
     // 먹이 패널 버튼
@@ -39,7 +41,7 @@ public class InputManager : MonoBehaviour
     {
         if (ctx.started)
         {
-
+            sideMenu.OnClickFoodButton();
         }
     }
     public void OnChangeType(InputAction.CallbackContext ctx)
@@ -75,25 +77,13 @@ public class InputManager : MonoBehaviour
             Vector2 screenPosition = Mouse.current.position.ReadValue();
 
             // 월드 위치
-            Vector3 wolrdPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
 
             // z는 사용하지 않음
-            wolrdPosition.z = 0f;
+            worldPosition.z = 0f;
 
-
-            switch (currentState)
-            {
-                case InputState.SpawnFood:
-                    OnSpawnFood(wolrdPosition);
-                    break;
-            }
-
+            // 먹이 활성화
+            foodManager.AddFood(worldPosition);
         }
-    }
-
-    // 먹이
-    void OnSpawnFood(Vector3 worldPosition)
-    {
-        foodManager.AddFood(worldPosition);
     }
 }
