@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 261bf8582aacc7c4d9a89feab41c4683, type: 3}
   m_Name: CleanToolData
   m_EditorClassIdentifier: Assembly-CSharp::ToolData
-  itemName: Clean
+  itemName: "\uCCAD\uC18C \uB3C4\uAD6C"
   cost: 0
   sprite: {fileID: 2053317857811467591, guid: de649b1c67a38604aa741fab2a459ece, type: 3}
-  info: Clean Tool
+  info: "\uBB3C\uACE0\uAE30\uB4E4\uC758 \uBC30\uC124\uBB3C\uC744 \uCCAD\uC18C\uD560
+    \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n\n\uC77C\uC744 \uD588\uC73C\uB2C8 \uACE0\uC0DD\uC758
+    \uC758\uBBF8\uB85C <color=#fff000>\uB3C8</color>\uC744 \uD68D\uB4DD\uD569\uB2C8\uB2E4."

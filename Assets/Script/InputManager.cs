@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
     public event Action OnFoodKey;                   // 먹이 키 눌렀을 때
     public event Action<int> OnScroll;               // 휠 굴릴 때 (먹이용,값 전달)
     public event Action<Vector3> OnInteractionFood;  // 클릭했을 때 (먹이용,좌표 전달)
-    public event Action OnInteractionClean;          // 누를 때, 뗄 때 (청소 도구용)
+    public event Action<bool> OnInteractionClean;    // 누를 때, 뗄 때 (청소 도구용, 온오프 전달)
 
     [SerializeField] LayerMask fishTankLayer;   // 먹이 클릭가능 레이어
     [SerializeField] CleanTool cleanTool;       // 배설물 청소 도구
@@ -135,9 +135,6 @@ public class InputManager : MonoBehaviour
     // 상호작용
     public void OnInteraction(InputAction.CallbackContext ctx)
     {
-        // UI 위에 마우스가 있다면 무시
-        if (IsPointerOverUI() == true) return;
-
         switch (currentState)
         {
             case InputState.SpawnFood:
@@ -152,11 +149,11 @@ public class InputManager : MonoBehaviour
     // 먹이 상호작용
     void SpawnFoodState(InputAction.CallbackContext ctx)
     {
+        // UI 방지
+        if (IsPointerOverUI() == true) return;
+
         if (ctx.started)
         {
-            // UI 위에 마우스가 있다면 클릭 무시
-            if (IsPointerOverUI() == true) return;
-
             // 마우스 월드 좌표에 먹이 활성화
             OnInteractionFood?.Invoke(MouseWorldPos);
         }
@@ -166,10 +163,17 @@ public class InputManager : MonoBehaviour
     // 청소 도구 상호작용
     void CleanToolState(InputAction.CallbackContext ctx)
     {
-        if (ctx.started || ctx.canceled)
+        // 누르기 시작할 떄
+        if (ctx.started)
         {
-            OnInteractionClean?.Invoke();
+            // UI 방지
+            if (IsPointerOverUI() == true) return;
+                OnInteractionClean?.Invoke(true);
         }
+        // 뗄 때
+        else if (ctx.canceled)
+            OnInteractionClean?.Invoke(false);
+
     }
 
     #endregion

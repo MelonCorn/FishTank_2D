@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+
     [SerializeField] private RectTransform shopPanel;   // 상점 패널
     [SerializeField] private RectTransform foodPanel;   // 먹이 패널
 
@@ -18,6 +19,7 @@ public class UIManager : MonoBehaviour
     private Coroutine foodCoroutine;         // 먹이슬라이드
 
     ICreateButton[] createButtonUI;          // 버튼 생성 스크립트
+    public HoverPanel hoverPanel;            // 정보 패널
 
     private void Awake()
     {
@@ -50,6 +52,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        // x만
         // 시작할 땐 닫힘 위치로
         shopPanel.anchoredPosition = new Vector2(closePos.anchoredPosition.x, shopPanel.anchoredPosition.y);
         foodPanel.anchoredPosition = new Vector2(closePos.anchoredPosition.x, foodPanel.anchoredPosition.y);
@@ -74,6 +77,18 @@ public class UIManager : MonoBehaviour
 
         foodCoroutine = TogglePanel(foodPanel, isFoodOpen, foodCoroutine);
     }
+
+
+    public void HoverButton(ItemData data, bool isActive)
+    {
+        Debug.Log($"호버 / {isActive} / {hoverPanel.gameObject.activeSelf}");
+        // 데이터 주입!
+        hoverPanel.SetInfo(data);
+        // 활성화 상태
+        hoverPanel.gameObject.SetActive(isActive);
+    }
+
+
 
     // 패널 상태 전환
     public Coroutine TogglePanel(RectTransform panel, bool isOpen, Coroutine coroutine)

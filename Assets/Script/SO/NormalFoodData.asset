@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ae7fbdfda2c2140961cd0a0cafb1f8, type: 3}
   m_Name: NormalFoodData
   m_EditorClassIdentifier: Assembly-CSharp::FoodData
-  itemName: Normal
+  itemName: "\uBD88\uB7C9\uC2DD\uD488"
   cost: 5
   sprite: {fileID: 8001177676779995881, guid: 889a90f3fdeabbd40a0c21a1d39f1ff7, type: 3}
-  info: .
+  info: "\uC131\uBD84\uD45C\uAC00 \uC5C6\uB294 <color=#fff000>\uC815\uCCB4\uBD88\uBA85\uC758
+    \uAC00\uB8E8</color>\uC785\uB2C8\uB2E4.\n\n\uBA39\uAE34 \uD558\uB294\uB370 \uC601\uC591\uAC00\uB294
+    \uAC70\uC758 \uC5C6\uC2B5\uB2C8\uB2E4..\n\n\uAC04\uC2DD \uC815\uB3C4\uB85C \uC0DD\uAC01\uD558\uC138\uC694
+    !"
   exp: 1
   fill: 25
   lifeTime: 10

@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ae7fbdfda2c2140961cd0a0cafb1f8, type: 3}
   m_Name: PremiumFoodData
   m_EditorClassIdentifier: Assembly-CSharp::FoodData
-  itemName: Premium
+  itemName: "\uC288\uD37C\uBCFC"
   cost: 25
   sprite: {fileID: -6526498654676061452, guid: 3a9d1e6b36328974b8590598d3781d64, type: 3}
-  info: Premium Food.
+  info: "\uD55C \uC785\uB9CC \uBA39\uC5B4\uB3C4 \uB0B4\uC77C \uC544\uCE68\uAE4C\uC9C0
+    \uC18C\uD654\uC2DC\uCF1C\uC57C \uD560 \uC815\uB3C4\uC785\uB2C8\uB2E4.\n\n\uBC30\uAC00
+    \uBE75\uBE75\uD574\uC838\uC11C \uBC25 \uB2EC\uB77C\uACE0 \uBCF4\uCC44\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.\n\n<color=#ffa500>\uACBD\uACE0
+    : \uBB3C\uACE0\uAE30\uAC00 \uC0B4\uCC14 \uC218 \uC788\uC2B5\uB2C8\uB2E4.</color>"
   exp: 30
   fill: 70
   lifeTime: 10

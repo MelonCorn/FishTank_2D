@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910f5d733b45de142b1c59743db826a4, type: 3}
   m_Name: NormalFishData
   m_EditorClassIdentifier: Assembly-CSharp::FishData
-  itemName: Normal
+  itemName: "\uAF2C\uB9C8"
   cost: 5
   sprite: {fileID: 383178366684351716, guid: ea6ec02b3eaa7a0439c128d79a96877d, type: 3}
-  info: Normal Fish.
+  info: "\uC801\uC740 \uBA39\uC774\uB85C\uB3C4 \uD2BC\uD2BC\uD558\uAC8C \uC790\uB77C\uB294
+    \uD6A8\uC790 \uBB3C\uACE0\uAE30 \uC785\uB2C8\uB2E4.\n\n\uC218\uC870\uB97C \uCC44\uC6B0\uB294\uB370
+    \uB9CE\uC740 \uB3C4\uC6C0\uC744 \uC90D\uB2C8\uB2E4.\n\n<color=#8ac147>\uCD08\uBCF4</color>\uB4E4\uC5D0\uAC8C
+    \uCD94\uCC9C\uD569\uB2C8\uB2E4 !"
   moveSpeed: 2
   minWaitTime: 0.1
   maxWaitTime: 2

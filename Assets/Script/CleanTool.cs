@@ -27,30 +27,20 @@ public class CleanTool : MonoBehaviour
     {
         InputManager.Instance.OnInteractionClean += SetClean;
 
-        isCleaning = false;
+        // 상태 초기화
+        SetClean(false);
     }
     private void OnDisable()
     {
         if(InputManager.Instance != null)
             InputManager.Instance.OnInteractionClean -= SetClean;
-
-        // 상태 초기화
-        ResetTool();
-    }
-
-
-    // 상태 초기화 (비활성화 될 때)
-    private void ResetTool()
-    {
-        isCleaning = false;
-        toolCollider.enabled = false;
-        spriteRenderer.color = deactiveColor;
     }
 
     // 청소 상태
-    public void SetClean()
+    public void SetClean(bool isActive)
     {
-        isCleaning = !isCleaning;
+        // 상태 결정
+        isCleaning = isActive;
 
         // 상태에 따라 콜라이더 활성화
         toolCollider.enabled = isCleaning;

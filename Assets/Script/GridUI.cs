@@ -9,21 +9,33 @@ public class GridUI : MonoBehaviour
     [SerializeField] protected Transform buttonGrid;     // 버튼 그리드
     [SerializeField] protected GridButton buttonPrefab;  // 버튼 프리팹
 
+    protected UIManager uiManager;
+
+
+    private void Awake()
+    {
+        uiManager = GetComponent<UIManager>();
+    }
 
     // ItemData 타입 SO 처리
-    protected void GenerateButtons(ItemData[] datas, Action<int> setupAction)
+    protected void GenerateButtons(ItemData[] datas, Action<int> clickAction, Action<ItemData, bool> hoverAction)
     {
         for (int i = 0; i < datas.Length; i++)
         {
             // 버튼 생성 , 그리드 자식으로
             GridButton button = Instantiate(buttonPrefab, buttonGrid);
 
-            // 버튼 세팅 (데이터, 번호, 함수)
-            button.Setting(datas[i], i, setupAction);
+            // 버튼 세팅 (데이터, 번호, 클릭, 호버)
+            button.Setting(datas[i], i, clickAction, hoverAction);
 
             // 목록 추가
             buttons.Add(button);
         }
     }
 
+    // 버튼 호버
+    protected void OnHover(ItemData data, bool isActive)
+    {
+        uiManager.HoverButton(data, isActive);
+    }
 }

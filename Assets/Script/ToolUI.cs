@@ -38,14 +38,7 @@ public class ToolUI : GridUI, ICreateButton
         tools.Add(cleanToolData);             
 
         // 생성 실행 (SO배열, 함수)
-        GenerateButtons(tools.ToArray(), OnToolClick);
-    }
-
-    // 버튼 클릭 시 (자동으로 들어감)
-    private void OnToolClick(int index)
-    {
-        // 도구 선택
-        SelectTool(index);
+        GenerateButtons(tools.ToArray(), SelectTool, OnHover);
     }
     
     // 휠 굴렸을 때
@@ -78,7 +71,7 @@ public class ToolUI : GridUI, ICreateButton
         if (index < foodManager.FoodData.Length)
         {
             // 먹이 선택
-            FoodData selectedFood = foodManager.FoodData[index];
+            FoodData selectedFood = foodManager.FoodData[currentIndex];
 
             // 상태 전환
             InputManager.Instance.ChangeState(InputState.SpawnFood);

@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910f5d733b45de142b1c59743db826a4, type: 3}
   m_Name: FatFishData
   m_EditorClassIdentifier: Assembly-CSharp::FishData
-  itemName: Fat
+  itemName: "\uBA39\uBCF4"
   cost: 55
   sprite: {fileID: 8151895571227466268, guid: 2bc33fc2b2deb154ba980819d3c5b75c, type: 3}
-  info: Fat Fish.
+  info: "\uBC29\uAE08 \uBC25\uC744 \uC92C\uB294\uB370 \uC65C \uB610 \uB2EC\uB77C\uACE0
+    \uD560\uAE4C\uC694..?\n\n\uC704\uC7A5\uC774 <color=#ff82ff><b>\uBE14\uB799\uD640</b></color>\uACFC
+    \uC5F0\uACB0\uB418\uC5B4 \uC788\uB2E4\uB294 \uC18C\uBB38\uC774 \uC788\uC2B5\uB2C8\uB2E4.\n\n\uC2DD\uC0AC\uB97C
+    \uD588\uC73C\uBA74 \uB0B4\uBCF4\uB0B4\uB294 \uC591\uB3C4 \uB9CE\uACA0\uC8E0?"
   moveSpeed: 1
   minWaitTime: 0.5
   maxWaitTime: 4

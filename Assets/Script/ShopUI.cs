@@ -9,9 +9,8 @@ public class ShopUI : GridUI, ICreateButton
     public void CreateButtons()
     {
         // 생성 실행 (SO, 함수)
-        GenerateButtons(fishTank.FishData, fishTank.AddFish);
+        GenerateButtons(fishTank.FishData, fishTank.AddFish, OnHover);
     }
-
 
 }
 

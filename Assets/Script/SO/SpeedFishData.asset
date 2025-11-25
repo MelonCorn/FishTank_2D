@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910f5d733b45de142b1c59743db826a4, type: 3}
   m_Name: SpeedFishData
   m_EditorClassIdentifier: Assembly-CSharp::FishData
-  itemName: Speed
+  itemName: "\uD130\uBCF4"
   cost: 25
   sprite: {fileID: -338751470667691772, guid: fa5ee4481db729b4cb43800e379c871c, type: 3}
-  info: Speed Fish.
+  info: "\uB208 \uAE5C\uBE61\uD558\uBA74 \uC0AC\uB77C\uC9D1\uB2C8\uB2E4.\n\n\uBD24\uB2E4\uBA74
+    \uADF8\uAC74 <color=#ffc0cb>\uC794\uC0C1</color>\uC785\uB2C8\uB2E4..\n\n\uC18D\uB3C4\uC5D0
+    \uBE44\uD574 \uC720\uC9C0\uBE44\uAC00 \uB098\uC058\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
   moveSpeed: 3
   minWaitTime: 0.1
   maxWaitTime: 2

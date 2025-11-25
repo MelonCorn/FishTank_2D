@@ -63,7 +63,10 @@ public class GameManager : MonoBehaviour
     // 재화 추가
     public void AddMoney(int amount)
     {
+        // 추가
         money += amount;
+        // 갱신
+        UpdateMoneyUI(money);
     }
 
     // 결제 시도
@@ -90,13 +93,13 @@ public class GameManager : MonoBehaviour
     public void UpdateFishCount(int count)
     {
         if (fishCountText != null)
-            fishCountText.text = $"Fish Count : {count}";
+            fishCountText.text = $"물고기 수 : {count}";
     }
 
     // 재화 갱신
     private void UpdateMoneyUI(int money)
     {
         if (moneyText != null)
-            moneyText.text = $"Money : {money:N0}";
+            moneyText.text = $"돈 : {money:N0}";
     }
 }
