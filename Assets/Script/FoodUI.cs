@@ -1,29 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class FoodUI : MonoBehaviour
+public class FoodUI : GridUI, ICreateButton
 {
-    private FoodManager foodManager;
-
-    private List<PanelButton> foodButtons = new();
-
-    [SerializeField] Transform foodGrid;            // 먹이 버튼 패널
-    [SerializeField] PanelButton foodButtonPrefab;  // 먹이 버튼 프리팹
+    [SerializeField] FoodManager foodManager;       
     [SerializeField] RectTransform selectedEdge;    // 선택 오브젝트
-
-    private void Awake()
-    {
-        foodManager = GetComponent<FoodManager>();
-    }
 
     private void OnEnable()
     {
         // 먹이 변경 구독
         foodManager.OnFoodChanged += UpdateSelection;
-
-        // 먹이 버튼 생성
-        CreateFoodButton();
     }
     private void OnDisable()
     {
@@ -31,23 +17,19 @@ public class FoodUI : MonoBehaviour
         foodManager.OnFoodChanged -= UpdateSelection;
     }
 
+
     // 먹이 버튼 생성
-    void CreateFoodButton()
+    public void CreateButtons()
     {
-        // 먹이 데이터 수 만큼
-        for (int i = 0; i < foodManager.FoodData.Length; i++)
-        {
-            // 버튼 생성
-            PanelButton button = Instantiate(foodButtonPrefab, foodGrid);
-
-            FoodData data = foodManager.FoodData[i];
-
-            // 버튼 세팅
-            button.Setting(i, data.sprite, data.foodName, data.cost, foodManager.OnFoodClick);
-
-            // 리스트에 추가
-            foodButtons.Add(button);
-        }
+        // 상속 받은 제네릭 함수
+        // <ScriptableObject>
+        // SO 배열, 버튼 세팅 람다식
+        GenerateButtons<FoodData>(
+            foodManager.FoodData,
+            (index, food, button) =>
+            {
+                button.Setting(index, food.sprite, food.foodName, food.cost, foodManager.OnFoodClick);
+            });
     }
 
 
@@ -56,7 +38,7 @@ public class FoodUI : MonoBehaviour
     {
         // 선택된 버튼의 위치로 테두리 이동
         // 부모 변경
-        selectedEdge.SetParent(foodButtons[index].transform, false);
+        selectedEdge.SetParent(buttons[index].transform, false);
         // 1번으로
         selectedEdge.SetAsFirstSibling();
         // 정중앙
@@ -64,5 +46,4 @@ public class FoodUI : MonoBehaviour
         // 활성화
         selectedEdge.gameObject.SetActive(true);
     }
-
 }

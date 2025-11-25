@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PanelButton : MonoBehaviour
+public class GridButton : MonoBehaviour
 {
     [SerializeField] Image iconImg;                 // 아이콘
     [SerializeField] TextMeshProUGUI nameText;      // 이름 텍스트
