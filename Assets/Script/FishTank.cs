@@ -6,8 +6,6 @@ public class FishTank : MonoBehaviour
 {
     private ObjectPool<FishAI> fishPool;           // 물고기 풀
 
-    private int currentFish;                       // 현재 선택 물고기
-
     private float padding = 0.5f;                  // 화면 끝에서 안쪽으로 여백  
 
     private Vector2 minBounds;                     // 화면 최소 좌표 (왼쪽 아래)

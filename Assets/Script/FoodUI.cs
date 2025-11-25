@@ -22,18 +22,13 @@ public class FoodUI : MonoBehaviour
         // 먹이 변경 구독
         foodManager.OnFoodChanged += UpdateSelection;
 
+        // 먹이 버튼 생성
+        CreateFoodButton();
     }
     private void OnDisable()
     {
         // 먹이 변경 구독 해지
         foodManager.OnFoodChanged -= UpdateSelection;
-    }
-
-
-    private void Start()
-    {
-        // 먹이 버튼 생성
-        CreateFoodButton();
     }
 
     // 먹이 버튼 생성

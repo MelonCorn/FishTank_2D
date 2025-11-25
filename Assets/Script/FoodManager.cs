@@ -35,7 +35,7 @@ public class FoodManager : MonoBehaviour
     private void Start()
     {
         // 처음엔 0번 선택
-        OnFoodChanged(0);
+        OnFoodChanged?.Invoke(0);
     }
 
     #region 풀링
@@ -121,9 +121,6 @@ public class FoodManager : MonoBehaviour
 
         // 적용 후 알림
         CurrentFood = current;
-
-        // 선택 먹이 텍스트 갱신
-        UIManager.Instance.UpdateFoodType(foodData[current].foodName);
     }
 
     // 버튼 클릭 시 호출될 함수

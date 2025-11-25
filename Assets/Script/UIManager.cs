@@ -5,7 +5,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
-    [SerializeField] TextMeshProUGUI foodTypeText;      // 현재 먹이 텍스트
     [SerializeField] TextMeshProUGUI fishCountText;     // 물고기 수 텍스트
     [SerializeField] TextMeshProUGUI moneyText;         // 재화 텍스트
 
@@ -37,16 +36,6 @@ public class UIManager : MonoBehaviour
         if (fishCountText != null)
             fishCountText.text = $"Fish Count : {count}";
     }
-
-    // ---------------------------------------------------------
-
-    // 선택된 먹이 이름 갱신 FoodManager
-    public void UpdateFoodType(string foodName)
-    {
-        if (foodTypeText != null)
-            foodTypeText.text = $"Current Food : {foodName}";
-    }
-
 
     // ---------------------------------------------------------
 
