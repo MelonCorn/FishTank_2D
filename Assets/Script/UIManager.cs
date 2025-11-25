@@ -74,6 +74,7 @@ public class UIManager : MonoBehaviour
 
         foodCoroutine = TogglePanel(foodPanel, isFoodOpen, foodCoroutine);
     }
+
     // 패널 상태 전환
     public Coroutine TogglePanel(RectTransform panel, bool isOpen, Coroutine coroutine)
     {
@@ -90,7 +91,6 @@ public class UIManager : MonoBehaviour
         // 슬라이드 시작
         return StartCoroutine(SlideToTarget(panel, target));
     }
-
 
     // 슬라이드 
     IEnumerator SlideToTarget(RectTransform panel, RectTransform target)

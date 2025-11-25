@@ -21,7 +21,7 @@ public class FoodUI : GridUI, ICreateButton
     public void CreateButtons()
     {
         // 생성 실행 (SO, 함수)
-        GenerateButtons(foodManager.FoodData, foodManager.ChangeFood);
+        GenerateButtons(foodManager.FoodData, foodManager.OnFoodClick);
     }
 
 
