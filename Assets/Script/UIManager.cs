@@ -41,8 +41,8 @@ public class UIManager : MonoBehaviour
         if (InputManager.Instance == null) return;
 
         // 오픈 키 해지
-        InputManager.Instance.OnShopKey += OnClickShop;
-        InputManager.Instance.OnFoodKey += OnClickFood;
+        InputManager.Instance.OnShopKey -= OnClickShop;
+        InputManager.Instance.OnFoodKey -= OnClickFood;
     }
 
 
