@@ -34,6 +34,8 @@ public class FishAI : MonoBehaviour
     private WaitForSeconds hungerDelay;              // 허기 간격
     private WaitUntil untilHungry;                   // 배고픔 상태 체크
 
+    private WaitForSeconds excreteDelay;             // 배설 간격
+
 
     private void Awake()
     {
@@ -57,18 +59,18 @@ public class FishAI : MonoBehaviour
         detectFoodDelay = new WaitForSeconds(fishData.foodDetectInterval);
         // 허기 간격 설정
         hungerDelay = new WaitForSeconds(fishData.hungerInterval);
+        // 배설 간격 설정
+        excreteDelay = new WaitForSeconds(fishData.excreteInterval);
 
         // 치어 이미지 적용
         spriteRenderer.sprite = fishData.babySprite;
 
-        if (gameObject.activeInHierarchy)
-        {
-            // Idle 상태
-            ChangeState(FishState.Idle);
-            // 허기 코루틴 시작
-            // 살아있는 동안 계속 돌아가므로 안 담아도 됨
-            StartCoroutine(Hunger());
-        }
+        // Idle 상태
+        ChangeState(FishState.Idle);
+        
+        // 살아있는 동안 계속 돌아가므로 안 담아도 됨
+        StartCoroutine(Hunger());          // 허기 코루틴 시작
+        StartCoroutine(Defecation());      // 배변 코루틴 시작
     }
 
     private void OnEnable()
@@ -287,7 +289,7 @@ public class FishAI : MonoBehaviour
         }
 
         // 풀 반납
-        fishTank.ReturnToPool(this);
+        fishTank.ReturnToFishPool(this);
     }
 
 
@@ -409,6 +411,29 @@ public class FishAI : MonoBehaviour
 
     // -------------------------------------------
 
+    #region Excrete
+
+    // 배설
+    IEnumerator Defecation()
+    {
+        // 사망 상태가 아니면 루프
+        while (currentState != FishState.Dead)
+        {
+            // 배변 간격만큼 대기
+            yield return excreteDelay;
+
+            // 대기 중 사망하면 루프 깨기
+            if (currentState == FishState.Dead) break;
+
+            // 현재 위치에 배설
+            fishTank.Excretion(transform.position);
+        }
+    }
+
+
+    #endregion
+
+    // -------------------------------------------
 
     // 스프라이트 좌우 반전
     private void FlipSprite(Vector2 target)

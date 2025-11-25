@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
 
-    //public event Action<int> OnHappinessChanged;// 행복도 변경 알림
+    public event Action<int> OnHappinessChanged;// 행복도 변경 알림
     //public event Action<int> OnMoneyChanged;    // 재화 변경 알림
 
     [SerializeField] TextMeshProUGUI fishCountText;     // 물고기 수 텍스트
@@ -52,6 +52,12 @@ public class GameManager : MonoBehaviour
         // 시작 하면 한 번 알림
         //OnMoneyChanged?.Invoke(money);
         UpdateMoneyUI(money);
+    }
+
+    // 행복도 증가
+    public void IncreaseHappiness()
+    {
+
     }
 
     // 재화 추가

@@ -20,6 +20,8 @@ public class FishData : ItemData
     public float hungerInterval = 1f;
     [Header("최대 허기")]
     public int maxHungry = 100;
+    [Header("배설 간격")]
+    public float excreteInterval = 10f;
     [Header("필요 성장 경험치")]
     public int requireExp = 20;
     [Header("감지 먹이 레이어")]

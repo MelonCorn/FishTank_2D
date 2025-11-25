@@ -25,6 +25,7 @@ MonoBehaviour:
   hungerAmount: 2
   hungerInterval: 1
   maxHungry: 70
+  excreteInterval: 20
   requireExp: 50
   detectFoodLayer:
     serializedVersion: 2

@@ -2579,7 +2579,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d73fd0ca87c26bb45a7af79af9710f4c, type: 2}
   - {fileID: 11400000, guid: b29cc07271089d848ac82f17f0c78062, type: 2}
   - {fileID: 11400000, guid: 3600c286d48530f47bced98795461d46, type: 2}
-  defaultSize: 10
+  fishPoolDefaultSize: 100
+  excrementPrefab: {fileID: 5262378993784531658, guid: 6d21e4e64e166c447ab899ca6c427faa, type: 3}
+  excrementPoolDefaultSize: 100
 --- !u!4 &1731404367
 Transform:
   m_ObjectHideFlags: 0
