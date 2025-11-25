@@ -18,7 +18,7 @@ public class GridUI : MonoBehaviour
             // 버튼 생성 , 그리드 자식으로
             GridButton button = Instantiate(buttonPrefab, buttonGrid);
 
-            // 버튼 세팅
+            // 버튼 세팅 (데이터, 번호, 함수)
             button.Setting(datas[i], i, setupAction);
 
             // 목록 추가

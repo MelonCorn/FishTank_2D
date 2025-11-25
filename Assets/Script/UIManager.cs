@@ -11,8 +11,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] float slideSpeed = 10f;  // 슬라이드 속도
 
-    private bool isShopOpen;                  // 상점 패널 상태
-    private bool isFoodOpen;                  // 먹이 패널 상태
+    private bool isShopOpen = false;                  // 상점 패널 상태
+    private bool isFoodOpen = false;                  // 먹이 패널 상태
 
     private Coroutine shopCoroutine;         // 상점슬라이드
     private Coroutine foodCoroutine;         // 먹이슬라이드
@@ -78,9 +78,6 @@ public class UIManager : MonoBehaviour
     // 패널 상태 전환
     public Coroutine TogglePanel(RectTransform panel, bool isOpen, Coroutine coroutine)
     {
-        // 반대로
-        isOpen = !isOpen;
-
         // 실행 중이면 스답
         if (coroutine != null)
             StopCoroutine(coroutine);

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -22,6 +23,10 @@ public class InputManager : MonoBehaviour
     public event Action OnFoodKey;             // 먹이 키 눌렀을 때
     public event Action<int> OnScroll;         // 휠 굴릴 때 (값 전달)
     public event Action<Vector3> OnClick;      // 클릭했을 때 (좌표 전달)
+
+    private RaycastHit2D hit;
+
+    [SerializeField] LayerMask fishTankLayer;   // 먹이 클릭가능 레이어
 
     private void Awake()
     {
@@ -75,7 +80,7 @@ public class InputManager : MonoBehaviour
         if (ctx.started)
         {
             // UI 위에 마우스가 있다면 클릭 무시
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (IsPointerOverUI() == true) return;
 
             // 마우스 위치
             Vector2 screenPosition = Mouse.current.position.ReadValue();
@@ -83,11 +88,27 @@ public class InputManager : MonoBehaviour
             // 월드 위치
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
 
-            // z는 사용하지 않음
-            worldPosition.z = 0f;
-
             // 먹이 활성화
             OnClick?.Invoke(worldPosition);
         }
+    }
+
+
+    // 마우스 UI 감지
+
+    private bool IsPointerOverUI()
+    {
+        // 포인터 데이터 정보 생성
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Mouse.current.position.ReadValue();
+
+        // 결과 담을 리스트 생성
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        // 위치에 관통해서 검사
+        EventSystem.current.RaycastAll(eventData, results);
+
+        // 리스트 하나라도 있으면 UI 감지
+        return results.Count > 0;
     }
 }
