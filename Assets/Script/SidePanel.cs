@@ -17,6 +17,26 @@ public class SidePanel : MonoBehaviour
     private Coroutine shopCoroutine;         // 상점슬라이드
     private Coroutine foodCoroutine;         // 먹이슬라이드
 
+
+    private void OnEnable()
+    {
+        // 오픈 키 구독
+        InputManager.Instance.OnShopKey += OnClickShop;
+        InputManager.Instance.OnFoodKey += OnClickFood;
+    }
+    private void OnDisable()
+    {
+        // 인풋 매니저 없으면 무시
+        if (InputManager.Instance == null) return;
+
+        // 오픈 키 해지
+        InputManager.Instance.OnShopKey += OnClickShop;
+        InputManager.Instance.OnFoodKey += OnClickFood;
+    }
+
+
+
+
     private void Start()
     {
         // 시작할 땐 닫힘 위치로
@@ -29,7 +49,7 @@ public class SidePanel : MonoBehaviour
     
 
     // 상점 패널 버튼
-    public void OnClickShopButton()
+    public void OnClickShop()
     {
         isShopOpen = !isShopOpen;
 
@@ -37,7 +57,7 @@ public class SidePanel : MonoBehaviour
     }
 
     // 먹이 패널 버튼
-    public void OnClickFoodButton()
+    public void OnClickFood()
     {
         isFoodOpen = !isFoodOpen;
 

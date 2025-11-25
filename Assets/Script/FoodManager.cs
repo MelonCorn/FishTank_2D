@@ -32,6 +32,24 @@ public class FoodManager : MonoBehaviour
         InitPool();
     }
 
+    private void OnEnable()
+    {
+        // 휠 굴림 구독
+        InputManager.Instance.OnScroll += ChangeFood;
+        // 마우스 클릭 구독
+        InputManager.Instance.OnClick += AddFood;
+    }
+    private void OnDisable()
+    {
+        // 인풋 매니저 없으면 무시
+        if (InputManager.Instance == null) return;
+
+        // 휠 굴림 해지
+        InputManager.Instance.OnScroll -= ChangeFood;
+        // 마우스 클릭 해지
+        InputManager.Instance.OnClick -= AddFood;
+    }
+
     private void Start()
     {
         // 처음엔 0번 선택
@@ -123,7 +141,7 @@ public class FoodManager : MonoBehaviour
         CurrentFood = current;
     }
 
-    // 버튼 클릭 시 호출될 함수
+    // 버튼 클릭 시 호출
     // 선택 먹이 변경
     public void OnFoodClick(int index)
     {

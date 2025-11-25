@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -12,28 +13,28 @@ public enum InputState
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] FishTank fishTank;
-    [SerializeField] FoodManager foodManager;
-    [SerializeField] SidePanel sideMenu;
+    public static InputManager Instance { get; private set; }
 
     private InputState currentState = InputState.SpawnFood;   // 현재 버튼
     public InputState CurrentState => currentState;
 
+    public event Action OnShopKey;             // 상점 키 눌렀을 때
+    public event Action OnFoodKey;             // 먹이 키 눌렀을 때
+    public event Action<int> OnScroll;         // 휠 굴릴 때 (값 전달)
+    public event Action<Vector3> OnClick;      // 클릭했을 때 (좌표 전달)
 
-    // 먹이 소환 버튼
-    public void OnSpawnFood(InputAction.CallbackContext ctx)
+    private void Awake()
     {
-        if (ctx.started)
-        {
-            currentState = InputState.SpawnFood;
-        }
+        Instance = this;
     }
-    // 상점 패널 버튼
+
+
+    // 상점 패널 키
     public void OnOpenShop(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
-            sideMenu.OnClickShopButton();
+            OnShopKey?.Invoke();
         }
     }
     // 먹이 패널 버튼
@@ -41,9 +42,11 @@ public class InputManager : MonoBehaviour
     {
         if (ctx.started)
         {
-            sideMenu.OnClickFoodButton();
+            OnFoodKey?.Invoke();
         }
     }
+
+    // 먹이 타입 변경
     public void OnChangeType(InputAction.CallbackContext ctx)
     {
         // 먹이 상태 아니면 무시
@@ -62,10 +65,11 @@ public class InputManager : MonoBehaviour
             int scrollDir = (scrollValue > 0) ? 1 : -1;
 
             // 타입 변경
-            foodManager.ChangeFood(scrollDir);
+            OnScroll?.Invoke(scrollDir);
         }
     }
 
+    // 상호작용
     public void OnInteraction(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
@@ -83,7 +87,7 @@ public class InputManager : MonoBehaviour
             worldPosition.z = 0f;
 
             // 먹이 활성화
-            foodManager.AddFood(worldPosition);
+            OnClick?.Invoke(worldPosition);
         }
     }
 }
