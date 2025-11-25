@@ -327,7 +327,7 @@ public class FishAI : MonoBehaviour
             isGrowth = true;
 
             // 스프라이트 성장 스프라이트로 변경
-            spriteRenderer.sprite = fishData.growthSprite;
+            spriteRenderer.sprite = fishData.sprite;
         }
     }
 

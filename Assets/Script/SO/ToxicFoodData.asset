@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ae7fbdfda2c2140961cd0a0cafb1f8, type: 3}
   m_Name: ToxicFoodData
   m_EditorClassIdentifier: Assembly-CSharp::FoodData
-  foodName: Toxic
+  itemName: Toxic
   cost: 15
+  sprite: {fileID: 8980552705043034508, guid: 3d9a8470eba4b2d4ca1b98ae5c4d5bb2, type: 3}
+  info: Toxic Food.
   exp: 0
   fill: -100
   lifeTime: 30
@@ -21,4 +23,3 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
-  sprite: {fileID: 8980552705043034508, guid: 3d9a8470eba4b2d4ca1b98ae5c4d5bb2, type: 3}

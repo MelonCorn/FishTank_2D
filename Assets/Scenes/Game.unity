@@ -2262,9 +2262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5169df0b9bea78142a9c3496fd0d38b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopUI
-  fishTank: {fileID: 1731404366}
-  fishGrid: {fileID: 442365152}
+  buttonGrid: {fileID: 442365152}
   buttonPrefab: {fileID: 4977957783132738647, guid: 1c27bea7c3a88e240950e2937ccf8ebc, type: 3}
+  fishTank: {fileID: 1731404366}
 --- !u!114 &1649449458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2277,9 +2277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcadcaf37b487334b93fec46b151f61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FoodUI
+  buttonGrid: {fileID: 358514001}
+  buttonPrefab: {fileID: 4977957783132738647, guid: 1c27bea7c3a88e240950e2937ccf8ebc, type: 3}
   foodManager: {fileID: 2067123146}
-  foodGrid: {fileID: 358514001}
-  foodButtonPrefab: {fileID: 4977957783132738647, guid: 1c27bea7c3a88e240950e2937ccf8ebc, type: 3}
   selectedEdge: {fileID: 711486375}
 --- !u!1 &1667100440
 GameObject:

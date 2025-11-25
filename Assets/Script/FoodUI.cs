@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FoodUI : GridUI, ICreateButton
@@ -21,15 +20,8 @@ public class FoodUI : GridUI, ICreateButton
     // 먹이 버튼 생성
     public void CreateButtons()
     {
-        // 상속 받은 제네릭 함수
-        // <ScriptableObject>
-        // SO 배열, 버튼 세팅 람다식
-        GenerateButtons<FoodData>(
-            foodManager.FoodData,
-            (index, food, button) =>
-            {
-                button.Setting(index, food.sprite, food.foodName, food.cost, foodManager.OnFoodClick);
-            });
+        // 생성 실행 (SO, 함수)
+        GenerateButtons(foodManager.FoodData, foodManager.ChangeFood);
     }
 
 

@@ -1,12 +1,8 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FishData", menuName = "Scriptable Objects/FishData")]
-public class FishData : ScriptableObject
+public class FishData : ItemData
 {
-    [Header("이름")]
-    public string fishName;
-    [Header("비용")]
-    public int cost = 10;
     [Header("이동 속도")]
     public float moveSpeed = 2f;
     [Header("이동 대기 시간")]
@@ -28,9 +24,8 @@ public class FishData : ScriptableObject
     public int requireExp = 20;
     [Header("감지 먹이 레이어")]
     public LayerMask detectFoodLayer;
-    [Header("물고기 스프라이트")]
+    [Header("치어 스프라이트")]
     public Sprite babySprite;         // 치어 스프라이트
-    public Sprite growthSprite;       // 성어 스프라이트
     [Header("상태 스프라이트")]
     public Sprite hungrySprite;       // 배고픔 스프라이트
     public Sprite deadSprite;         // 사망 스프라이트

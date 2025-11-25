@@ -1,12 +1,8 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FoodData", menuName = "Scriptable Objects/FoodData")]
-public class FoodData : ScriptableObject
+public class FoodData : ItemData
 {
-    [Header("이름")]
-    public string foodName;
-    [Header("비용")]
-    public int cost = 1;
     [Header("성장 경험치")]
     public int exp = 1;
     [Header("감소 허기")]
@@ -17,6 +13,4 @@ public class FoodData : ScriptableObject
     public float sinkSpeed = 1f;
     [Header("먹이 레이어")]
     public LayerMask layer;
-    [Header("스프라이트")]
-    public Sprite sprite;
 }

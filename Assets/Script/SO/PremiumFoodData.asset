@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ae7fbdfda2c2140961cd0a0cafb1f8, type: 3}
   m_Name: PremiumFoodData
   m_EditorClassIdentifier: Assembly-CSharp::FoodData
-  foodName: Premium
+  itemName: Premium
   cost: 25
+  sprite: {fileID: -6526498654676061452, guid: 3a9d1e6b36328974b8590598d3781d64, type: 3}
+  info: Premium Food.
   exp: 30
   fill: 70
   lifeTime: 10
@@ -21,4 +23,3 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
-  sprite: {fileID: -6526498654676061452, guid: 3a9d1e6b36328974b8590598d3781d64, type: 3}

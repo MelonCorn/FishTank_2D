@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910f5d733b45de142b1c59743db826a4, type: 3}
   m_Name: SpeedFishData
   m_EditorClassIdentifier: Assembly-CSharp::FishData
-  fishName: Speed
+  itemName: Speed
   cost: 25
+  sprite: {fileID: -338751470667691772, guid: fa5ee4481db729b4cb43800e379c871c, type: 3}
+  info: Speed Fish.
   moveSpeed: 3
   minWaitTime: 0.1
   maxWaitTime: 2
@@ -28,6 +30,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   babySprite: {fileID: -4539525770715284387, guid: ca261d3f1a6fd9b42994f2799ce7b255, type: 3}
-  growthSprite: {fileID: -338751470667691772, guid: fa5ee4481db729b4cb43800e379c871c, type: 3}
   hungrySprite: {fileID: -1671663248283000969, guid: ef777b3148ba2e74088c5b6c00eaf6b5, type: 3}
   deadSprite: {fileID: -7411738981383325484, guid: c5c4dba40ead1694e9df502e11936344, type: 3}

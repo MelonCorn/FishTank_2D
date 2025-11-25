@@ -11,18 +11,16 @@ public class GridUI : MonoBehaviour
 
 
     // 버튼 생성 제네릭 함수
-    // 여러 데이터SO 처리 가능
-    protected void GenerateButtons<T>(T[] datas, Action<int, T, GridButton> setupAction) where T : ScriptableObject
+    // ItemData 타입 SO 처리 가능
+    protected void GenerateButtons(ItemData[] datas, Action<int> setupAction)
     {
         for (int i = 0; i < datas.Length; i++)
         {
             // 버튼 생성 , 그리드 자식으로
             GridButton button = Instantiate(buttonPrefab, buttonGrid);
 
-            // 세팅
-            T data = datas[i];
             // 람다식 실행
-            setupAction(i, data, button);
+            setupAction(i);
 
             // 목록 추가
             buttons.Add(button);

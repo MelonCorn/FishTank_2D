@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ae7fbdfda2c2140961cd0a0cafb1f8, type: 3}
   m_Name: NormalFoodData
   m_EditorClassIdentifier: Assembly-CSharp::FoodData
-  foodName: Normal
+  itemName: Normal
   cost: 5
+  sprite: {fileID: 8001177676779995881, guid: 889a90f3fdeabbd40a0c21a1d39f1ff7, type: 3}
+  info: .
   exp: 1
   fill: 25
   lifeTime: 10
@@ -21,4 +23,3 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
-  sprite: {fileID: 8001177676779995881, guid: 889a90f3fdeabbd40a0c21a1d39f1ff7, type: 3}
