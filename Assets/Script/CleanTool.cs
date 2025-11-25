@@ -7,6 +7,8 @@ public class CleanTool : MonoBehaviour
 
     private bool isCleaning;
 
+    [SerializeField] int gainMoney;         // 획득 재화
+
     // 색상
     [SerializeField] Color activeColor;
     [SerializeField] Color deactiveColor;
@@ -65,6 +67,8 @@ public class CleanTool : MonoBehaviour
             // 컴포넌트 체크
             if(other.TryGetComponent<Excrement>(out Excrement excrement))
             {
+                // 재화 추가
+                GameManager.Instance.AddMoney(gainMoney);
                 // 비활성화
                 excrement.Despawn();
             }

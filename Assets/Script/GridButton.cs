@@ -28,7 +28,12 @@ public class GridButton : MonoBehaviour
         // 데이터 연동
         iconImg.sprite = data.sprite;
         nameText.text = data.itemName;
-        costText.text = data.cost.ToString();
+
+        // 비용 0 이면 비우기
+        if(data.cost == 0)
+            costText.text = "";
+        else
+            costText.text = data.cost.ToString();
 
         // 버튼 리스너 연결 (캡처)
         button.onClick.AddListener(() => callback?.Invoke(indexNumber));

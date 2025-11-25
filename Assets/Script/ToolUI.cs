@@ -27,7 +27,7 @@ public class ToolUI : GridUI, ICreateButton
         SelectTool(0);
     }
 
-    // 먹이 버튼 생성
+    // 버튼 생성
     public void CreateButtons()
     {
         // 전체 도구 데이터 임시
@@ -44,6 +44,7 @@ public class ToolUI : GridUI, ICreateButton
     // 버튼 클릭 시 (자동으로 들어감)
     private void OnToolClick(int index)
     {
+        // 도구 선택
         SelectTool(index);
     }
     
@@ -63,7 +64,6 @@ public class ToolUI : GridUI, ICreateButton
         // 도구 선택
         SelectTool(nextIndex);
     }
-
 
     // 도구 선택
     private void SelectTool(int index)
@@ -93,8 +93,7 @@ public class ToolUI : GridUI, ICreateButton
         }
     }
 
-
-    // 선택 영역 갱신
+    // 하이라이트 영역 갱신
     void UpdateSelection(int index)
     {
         // 선택된 버튼의 위치로 테두리 이동

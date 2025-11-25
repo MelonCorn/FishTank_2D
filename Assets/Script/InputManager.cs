@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -97,18 +96,6 @@ public class InputManager : MonoBehaviour
         cleanTool.gameObject.SetActive(currentState == InputState.CleanTool);
     }
 
-    // 먹이 소환 상태
-    public void OnFoodState(InputAction.CallbackContext ctx)
-    {
-        ChangeState(InputState.SpawnFood);
-    }
-
-    // 청소 도구 상태
-    public void OnCleanState(InputAction.CallbackContext ctx)
-    {
-        ChangeState(InputState.CleanTool);
-    }
-
 
     #endregion
 
@@ -119,8 +106,8 @@ public class InputManager : MonoBehaviour
     // 먹이 타입 변경
     public void OnChangeType(InputAction.CallbackContext ctx)
     {
-        // 먹이 상태 아니면 무시
-        if (currentState != InputState.SpawnFood) return;
+        // 먹이, 청소 상태 아니면 무시
+        if (currentState != InputState.SpawnFood && currentState != InputState.CleanTool) return;
 
         // 휠이 굴릴 때 실행
         if (ctx.performed)
