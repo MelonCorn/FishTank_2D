@@ -10,8 +10,7 @@ public class GridUI : MonoBehaviour
     [SerializeField] protected GridButton buttonPrefab;  // 버튼 프리팹
 
 
-    // 버튼 생성 제네릭 함수
-    // ItemData 타입 SO 처리 가능
+    // ItemData 타입 SO 처리
     protected void GenerateButtons(ItemData[] datas, Action<int> setupAction)
     {
         for (int i = 0; i < datas.Length; i++)
