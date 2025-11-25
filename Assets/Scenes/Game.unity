@@ -334,6 +334,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8866412, y: 9.102083}
   m_EdgeRadius: 0
+--- !u!114 &43180164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5520834469697620316, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+  m_PrefabInstance: {fileID: 227942088663322906}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5fd743da982f241846415df5b3f8f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CleanTool
+--- !u!4 &43180167 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9204643792722084782, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+  m_PrefabInstance: {fileID: 227942088663322906}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &299514804
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
   m_Padding:
-    m_Left: 25
+    m_Left: 50
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
@@ -934,7 +950,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 385
+    m_Bits: 1921
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1782,6 +1798,7 @@ MonoBehaviour:
   fishTankLayer:
     serializedVersion: 2
     m_Bits: 512
+  cleanTool: {fileID: 43180164}
 --- !u!114 &1135709829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1871,6 +1888,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a2d57e1f-a6c4-47d8-a998-58e6fc1a6996
     m_ActionName: 'Player/OpenFood[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1135709828}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnCleanState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 179ce14f-10a3-4e29-9ac8-c35262ecde1f
+    m_ActionName: 'Player/OnClean[/Keyboard/1]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1908,7 +1941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1339201487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2362,6 +2395,7 @@ MonoBehaviour:
   buttonGrid: {fileID: 358514001}
   buttonPrefab: {fileID: 4977957783132738647, guid: 1c27bea7c3a88e240950e2937ccf8ebc, type: 3}
   foodManager: {fileID: 2067123146}
+  cleanToolData: {fileID: 11400000, guid: 385eefe84f1b9aa45a9913d5a14cd6ee, type: 2}
   selectedEdge: {fileID: 711486375}
 --- !u!1 &1667100440
 GameObject:
@@ -2631,6 +2665,7 @@ Transform:
   - {fileID: 1649449455}
   - {fileID: 1731404367}
   - {fileID: 2067123145}
+  - {fileID: 43180167}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1925564475
@@ -2927,6 +2962,63 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a1b56c5402ae9334996a675991edbd16, type: 2}
   - {fileID: 11400000, guid: c0179eff9a061fa4dbaaa932bec463e6, type: 2}
   defaultSize: 10
+--- !u!1001 &227942088663322906
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1846907211}
+    m_Modifications:
+    - target: {fileID: 3118812770093097406, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+      propertyPath: m_Name
+      value: CleanTool
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204643792722084782, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204643792722084782, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204643792722084782, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204643792722084782, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204643792722084782, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204643792722084782, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204643792722084782, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204643792722084782, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204643792722084782, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204643792722084782, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -7,24 +7,15 @@ public class FoodManager : MonoBehaviour
 {
     private ObjectPool<Food> foodPool;              // 먹이 풀
 
-    public event Action<int> OnFoodChanged;         // 먹이 변경 시
-
     [SerializeField] Food foodPrefab;               // 먹이 프리팹
     [SerializeField] FoodData[] foodData;           // 먹이 데이터 목록
     [SerializeField] int defaultSize = 20;          // 초기화 수
 
-    private int currentFood = 0;
+
+    private FoodData currentFood;                   // 선택된 먹이
 
     public FoodData[] FoodData => foodData;
 
-    private int CurrentFood
-    {
-        set
-        {
-            currentFood = value;
-            OnFoodChanged?.Invoke(currentFood);
-        }
-    }
 
     void Awake()
     {
@@ -34,27 +25,19 @@ public class FoodManager : MonoBehaviour
 
     private void OnEnable()
     {
-        // 휠 굴림 구독
-        InputManager.Instance.OnScroll += ChangeFood;
         // 마우스 클릭 구독
-        InputManager.Instance.OnClick += AddFood;
+        InputManager.Instance.OnInteractionFood += AddFood;
     }
     private void OnDisable()
     {
         // 인풋 매니저 없으면 무시
         if (InputManager.Instance == null) return;
 
-        // 휠 굴림 해지
-        InputManager.Instance.OnScroll -= ChangeFood;
         // 마우스 클릭 해지
-        InputManager.Instance.OnClick -= AddFood;
+        InputManager.Instance.OnInteractionFood -= AddFood;
     }
 
-    private void Start()
-    {
-        // 처음엔 0번 선택
-        OnFoodChanged?.Invoke(0);
-    }
+    // -------------------------------------------
 
     #region 풀링
     // 풀 초기화
@@ -105,11 +88,13 @@ public class FoodManager : MonoBehaviour
     }
     #endregion
 
+    // -------------------------------------------
+
     // 먹이 풀 사용
     public void AddFood(Vector3 worldPosition)
     {
         // 비용 체크 
-        if (GameManager.Instance.TryPurchase(foodData[currentFood].cost) == false) return;
+        if (GameManager.Instance.TryPurchase(currentFood.cost) == false) return;
 
         // 풀에서 먹이 가져옴
         Food newFood = foodPool.Get();
@@ -118,33 +103,12 @@ public class FoodManager : MonoBehaviour
         newFood.transform.position = worldPosition;
 
         // 선택된 먹이 데이터로 초기화
-        newFood.InitFoodType(foodData[currentFood]);
+        newFood.InitFoodType(currentFood);
     }
 
-
-    // 먹이 변경
-    public void ChangeFood(int dir)
+    // 먹이 선택
+    public void SetCurrentFood(FoodData data)
     {
-        int current = currentFood;
-
-        current += dir;
-
-        // 0 미만이면 마지막으로
-        if (current < 0)
-            current = foodData.Length - 1;
-
-        // 마지막 이상이면 0 으로
-        else if (current >= foodData.Length)
-            current = 0;
-
-        // 적용 후 알림
-        CurrentFood = current;
-    }
-
-    // 버튼 클릭 시 호출
-    // 선택 먹이 변경
-    public void OnFoodClick(int index)
-    {
-        CurrentFood = index;
+        currentFood = data;
     }
 }

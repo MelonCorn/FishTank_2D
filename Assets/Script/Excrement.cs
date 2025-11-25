@@ -27,9 +27,9 @@ public class Excrement : MonoBehaviour
         this.fishTank = fishTank;
     }
 
-    // 나중에 청소도구 사용으로
-    // 비활성화
-    void Despawn()
+
+    // 비활성화 (청소 용구에서)
+    public void Despawn()
     {
         // 풀 반납
         fishTank.ReturnToExcrementPool(this);
