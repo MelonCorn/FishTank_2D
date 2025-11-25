@@ -39,7 +39,7 @@ public class GridButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if(data.cost == 0)
             costText.text = "";
         else
-            costText.text = data.cost.ToString();
+            costText.text = $"{data.cost} 원";
 
         // 호버 이벤트
         OnHover = OnHoverCallBack;

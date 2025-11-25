@@ -81,7 +81,6 @@ public class UIManager : MonoBehaviour
 
     public void HoverButton(ItemData data, bool isActive)
     {
-        Debug.Log($"호버 / {isActive} / {hoverPanel.gameObject.activeSelf}");
         // 데이터 주입!
         hoverPanel.SetInfo(data);
         // 활성화 상태

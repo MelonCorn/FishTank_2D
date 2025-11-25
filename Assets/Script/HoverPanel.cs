@@ -21,7 +21,7 @@ public class HoverPanel : MonoBehaviour
         if(data.cost == 0)
             costText.text = "";
         else
-            costText.text = data.cost.ToString();
+            costText.text = $"{data.cost} ¿ø";
         infoText.text = data.info;
     }
 }
