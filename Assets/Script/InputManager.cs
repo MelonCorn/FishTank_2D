@@ -61,8 +61,8 @@ public class InputManager : MonoBehaviour
             // 혹시 모를 비정상적 입력 방지
             if (scrollValue == 0) return;
 
-            // 값에 따라 다음, 이전 선택
-            int scrollDir = (scrollValue > 0) ? 1 : -1;
+            // 값에 따라 이전, 다음
+            int scrollDir = (scrollValue > 0) ? -1 : 1;
 
             // 타입 변경
             OnScroll?.Invoke(scrollDir);

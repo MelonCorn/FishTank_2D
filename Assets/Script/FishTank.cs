@@ -111,7 +111,7 @@ public class FishTank : MonoBehaviour
     // 물고기 수 갱신
     void SetFishCountText()
     {
-        UIManager.Instance.UpdateFishCount(fishPool.CountActive);
+        GameManager.Instance.UpdateFishCount(fishPool.CountActive);
     }
 
     // 활동 범위 초기화

@@ -478,6 +478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53496a78a7d3b194a858dff2f48324c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  fishCountText: {fileID: 1925564477}
+  moneyText: {fileID: 1512131622}
 --- !u!4 &386890014
 Transform:
   m_ObjectHideFlags: 0
@@ -2228,8 +2230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d0b64ddbbb47b4a9110e0812fbbb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  fishCountText: {fileID: 1925564477}
-  moneyText: {fileID: 1512131622}
 --- !u!4 &1649449455
 Transform:
   m_ObjectHideFlags: 0
