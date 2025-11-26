@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "name": "MainInputSystem",
+    "name": "CustomInputSystem",
     "maps": [
         {
             "name": "Player",
@@ -43,9 +43,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "OnClean",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "179ce14f-10a3-4e29-9ac8-c35262ecde1f",
+                    "id": "af5ad4d1-ca92-448e-8e9d-cf90823a0910",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -99,12 +99,12 @@
                 },
                 {
                     "name": "",
-                    "id": "4fe44424-1f20-49b9-b219-2306ff1c1c7c",
-                    "path": "<Keyboard>/1",
+                    "id": "29cafd44-1838-45ed-b90f-e90d9da80097",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "OnClean",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

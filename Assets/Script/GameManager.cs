@@ -7,9 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
 
-    public event Action<int> OnHappinessChanged;// 행복도 변경 알림
-    //public event Action<int> OnMoneyChanged;    // 재화 변경 알림
-
     [SerializeField] TextMeshProUGUI fishCountText;     // 물고기 수 텍스트
     [SerializeField] TextMeshProUGUI moneyText;         // 재화 텍스트
 
@@ -64,13 +61,13 @@ public class GameManager : MonoBehaviour
     public void UpdateFishCount(int count)
     {
         if (fishCountText != null)
-            fishCountText.text = $"물고기 수 : {count}";
+            fishCountText.text = $" : {count}";
     }
 
     // 재화 갱신
     private void UpdateMoneyUI(int money)
     {
         if (moneyText != null)
-            moneyText.text = $"돈 : {money:N0}";
+            moneyText.text = $"돈 : {money:N0} 원";
     }
 }

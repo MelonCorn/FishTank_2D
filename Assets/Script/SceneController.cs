@@ -3,9 +3,27 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public void OnStart()
+    public static SceneController Instance { get; private set; }
+
+
+
+    private void Awake()
     {
-        SceneManager.LoadScene("Game");
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
+    public void LoadScene(int index)
+    {
+        SceneManager.LoadScene(index);
     }
 
     public void OnExit()
