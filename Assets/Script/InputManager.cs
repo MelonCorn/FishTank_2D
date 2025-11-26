@@ -27,6 +27,10 @@ public class InputManager : MonoBehaviour
     [SerializeField] LayerMask waterLayer;      // 먹이 클릭가능 레이어
     [SerializeField] CleanTool cleanTool;       // 배설물 청소 도구
 
+    [SerializeField] SoundPanel soundPanel;     // 소리 제어판
+
+    PlayerInput playerInput;                    // 입력 시스템
+
     private Vector3 MouseWorldPos
     {
         get
@@ -45,12 +49,16 @@ public class InputManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+
+        playerInput = GetComponent<PlayerInput>();
     }
 
     private void Update()
     {
-        // 청소 모드일 때만 마우스 따라다니게
-        if (currentState == InputState.CleanTool)
+        // 청소 모드일 때
+        // 사운드 패널 꺼져있을 때
+        // 마우스 따라다니게
+        if (currentState == InputState.CleanTool && soundPanel.isActive == false)
         {
             // 청소 도구 이동 명령
             cleanTool.transform.position = MouseWorldPos;
@@ -77,6 +85,34 @@ public class InputManager : MonoBehaviour
         {
             OnFoodKey?.Invoke();
         }
+    }
+
+    // 일시 정지
+    public void OnPause(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            // 일시 정지
+            // 사운드 패널 상태 설정
+            SetPause();
+        }
+    }
+
+
+    // 사운드 패널 상태 설정
+    public void SetPause()
+    {
+        // 사운드 패널 상태 변경
+        soundPanel.SetActivePanel();
+
+        // 활성화
+        // Pause 맵으로 변경
+        if (soundPanel.isActive == true)
+            playerInput.SwitchCurrentActionMap("Pause");
+        // 비활성화
+        // Player 맵으로 변경
+        else
+            playerInput.SwitchCurrentActionMap("Player");
     }
 
     #endregion
