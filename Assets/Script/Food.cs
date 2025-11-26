@@ -9,6 +9,9 @@ public class Food : MonoBehaviour
     private FoodData foodData;              // 먹이 정보
     private bool isEaten = false;           // 먹혔는지 체크
 
+    private float currentSpeed;             // 현재 속도
+
+    [SerializeField] float defaultSpeed;    // 물 밖 기본 하강 속도
         
     // 생성 시 초기화
     public void Init(FoodManager foodManager)
@@ -35,10 +38,16 @@ public class Food : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    private void OnEnable()
+    {
+        // 활성화 시 속도 기본
+        currentSpeed = defaultSpeed;
+    }
+
     private void Update()
     {
         // 아래로 가라앉음
-        transform.Translate(Vector3.down * foodData.sinkSpeed * Time.deltaTime);
+        transform.Translate(Vector3.down * currentSpeed * Time.deltaTime);
     }
 
 
@@ -78,6 +87,10 @@ public class Food : MonoBehaviour
                 // 풀 반납
                 Despawn();
             }
+        }
+        else if (other.CompareTag("Water"))
+        {
+            currentSpeed = foodData.sinkSpeed;
         }
         else if (other.CompareTag("Environment"))
         {

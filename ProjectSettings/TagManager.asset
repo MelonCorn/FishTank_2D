@@ -8,6 +8,7 @@ TagManager:
   - Fish
   - Environment
   - Excrement
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - 
   - Food
   - Fish
-  - FishTank
+  - 
   - Excrement
   - 
   - 

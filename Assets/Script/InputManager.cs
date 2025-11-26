@@ -24,7 +24,7 @@ public class InputManager : MonoBehaviour
     public event Action<Vector3> OnInteractionFood;  // 클릭했을 때 (먹이용,좌표 전달)
     public event Action<bool> OnInteractionClean;    // 누를 때, 뗄 때 (청소 도구용, 온오프 전달)
 
-    [SerializeField] LayerMask fishTankLayer;   // 먹이 클릭가능 레이어
+    [SerializeField] LayerMask waterLayer;      // 먹이 클릭가능 레이어
     [SerializeField] CleanTool cleanTool;       // 배설물 청소 도구
 
     private Vector3 MouseWorldPos

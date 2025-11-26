@@ -21,7 +21,8 @@ public class FishTank : MonoBehaviour
     [SerializeField] Excrement excrementPrefab;    // 배설물 프리팹
     [SerializeField] int excrementPoolDefaultSize = 100;// 초기화 수
 
-    public float Padding => padding;
+    [SerializeField] SpriteRenderer waterArea;          // 수조 구역
+
     public Vector2 MinBounds => minBounds;
     public Vector2 MaxBounds => maxBounds;
 
@@ -38,7 +39,7 @@ public class FishTank : MonoBehaviour
     private void Start()
     {
         // 화면 경계 설정
-        SetCameraBounds();
+        SetAreaBounds();
     }
 
     #region 물고기 풀링
@@ -183,22 +184,15 @@ public class FishTank : MonoBehaviour
 
 
     // 활동 범위 초기화
-    void SetCameraBounds()
+    void SetAreaBounds()
     {
-        // 메인 카메라
-        Camera mainCam = Camera.main;
+        // 스프라이트 경계값
+        Bounds bounds = waterArea.bounds;
 
-        // 카메라의 높이 절반 (Orthographic Size)
-        float vertExtent = mainCam.orthographicSize;
-
-        // 카메라의 너비 절반 (높이 * 화면비율)
-        float horzExtent = vertExtent * mainCam.aspect;
-
-        // 경계값 설정 (padding만큼 안쪽으로 들임)
-        minBounds = new Vector2(mainCam.transform.position.x - horzExtent + Padding,
-                                mainCam.transform.position.y - vertExtent + Padding);
-        maxBounds = new Vector2(mainCam.transform.position.x + horzExtent - Padding,
-                                mainCam.transform.position.y + vertExtent - Padding);
+        // 경계값 설정
+        // padding 만큼 더하고 빼서 안쪽으로 들임
+        minBounds = new Vector2(bounds.min.x + padding, bounds.min.y + padding);
+        maxBounds = new Vector2(bounds.max.x - padding, bounds.max.y - padding);
     }
 
 }

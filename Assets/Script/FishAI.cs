@@ -282,8 +282,9 @@ public class FishAI : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            // 아래로 이동
-            transform.position += Vector3.down * 0.3f * Time.deltaTime;
+            // 수조 안에서만 아래로 이동
+            if(transform.position.y >= fishTank.MinBounds.y)
+                transform.position += Vector3.down * 0.3f * Time.deltaTime;
 
             yield return null; // 다음 프레임까지 대기
         }
