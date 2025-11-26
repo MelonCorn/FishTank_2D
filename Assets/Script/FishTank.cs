@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class FishTank : MonoBehaviour
+public partial class FishTank : MonoBehaviour
 {
     private ObjectPool<FishAI> fishPool;           // 물고기 풀
     private ObjectPool<Excrement> excrementPool;   // 배설물 풀
@@ -83,7 +83,7 @@ public class FishTank : MonoBehaviour
         fish.Init(this);
 
         // 기본 물고기
-        fish.InitFishType(fishData[0]);
+        fish.InitFishType(fishData[0], 0);
 
         return fish;
     }
@@ -161,10 +161,11 @@ public class FishTank : MonoBehaviour
         newFish.transform.position = new Vector2(Random.Range(minBounds.x, maxBounds.x),Random.Range(minBounds.y, maxBounds.y));
 
         // 선택된 물고기 데이터로 초기화
-        newFish.InitFishType(fishData[index]);
+        newFish.InitFishType(fishData[index], index);
 
         // 물고기 수 텍스트
         SetFishCountText();
+
     }
 
     // 물고기 수 갱신
@@ -180,8 +181,6 @@ public class FishTank : MonoBehaviour
 
         excrement.transform.position = fishPosition;
     }
-
-
 
     // 활동 범위 초기화
     void SetAreaBounds()

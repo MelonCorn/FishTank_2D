@@ -36,6 +36,8 @@ public class FishAI : MonoBehaviour
 
     private WaitForSeconds excreteDelay;             // 배설 간격
 
+    private int id;         // 저장용 번호
+    public int ID => id;
 
     private void Awake()
     {
@@ -51,7 +53,7 @@ public class FishAI : MonoBehaviour
     }
 
     // 활성화 시 데이터 초기화
-    public void InitFishType(FishData newData)
+    public void InitFishType(FishData newData, int id)
     {
         fishData = newData;
 

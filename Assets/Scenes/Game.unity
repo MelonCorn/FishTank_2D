@@ -1959,6 +1959,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d857bd53d627344a31605c08facc12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundPanel
+--- !u!1 &928925969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 928925970}
+  - component: {fileID: 928925971}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &928925970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928925969}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1846907211}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &928925971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928925969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a2595a741c8664397b63e2c04dd46f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveManager
+  fishTank: {fileID: 1731404366}
+  waitingUI: {fileID: 2016741361}
 --- !u!1 &946518736
 GameObject:
   m_ObjectHideFlags: 0
@@ -3250,7 +3296,7 @@ Transform:
   - {fileID: 1649449455}
   - {fileID: 1731404367}
   - {fileID: 2067123145}
-  - {fileID: 6037848282793703479}
+  - {fileID: 928925970}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1925564475
@@ -3511,12 +3557,12 @@ GameObject:
   - component: {fileID: 2016741364}
   - component: {fileID: 2016741363}
   m_Layer: 5
-  m_Name: ToTitlePanel
+  m_Name: WaitingPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2016741362
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3820,7 +3866,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC800\uC7A5\uD558\uACE0 \uB3CC\uC544\uAC00\uAE30"
+  m_text: "\uC7A0\uC2DC\uB9CC \uAE30\uB2E4\uB824 \uC8FC\uC138\uC694 . . . "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3344df37971434640b6f9ad9411e451e, type: 2}
   m_sharedMaterial: {fileID: -3261102579721504902, guid: 3344df37971434640b6f9ad9411e451e, type: 2}
@@ -4016,7 +4062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4186,7 +4232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4208,7 +4254,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1846907211}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2065458951477456658, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4228,15 +4274,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2065458951477456658, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2065458951477456658, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2065458951477456658, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2065458951477456658, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4287,11 +4333,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
---- !u!4 &6037848282793703479 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2065458951477456658, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
-  m_PrefabInstance: {fileID: 6037848282793703478}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6037848282793703480 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7563258501262343886, guid: 0e92ad8a743712748a2097ba5a601e69, type: 3}
@@ -4317,7 +4358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.9411765}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4469,7 +4510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4578,7 +4619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4665,4 +4706,5 @@ SceneRoots:
   - {fileID: 1667100442}
   - {fileID: 467331496}
   - {fileID: 1994171432}
+  - {fileID: 6037848282793703478}
   - {fileID: 1846907211}
