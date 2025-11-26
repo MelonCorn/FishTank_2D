@@ -21,12 +21,27 @@ public class FishSaveData  // 물고기 저장 데이터
     public float posX;                 // X 포지션
     public float posY;                 // Y 포지션
 
+    public float waitTimer;            // 대기 타이머
+    public float hungerTimer;          // 허기 타이머
+    public float excreteTimer;         // 배설 타이머
+
+    public int currentHungry;          // 허기
+    public int currentExp;             // 성장치
+
+    public bool isGrowth;              // 성장 여부
+
     // 생성자
-    public FishSaveData(int id, Vector3 pos)
+    public FishSaveData(int id, Vector3 pos, float wTimer, float hTimer, float eTimer, int hungry, int exp, bool isGrowth)
     {
         fishID = id;
         posX = pos.x;
         posY = pos.y;
+        waitTimer = wTimer;
+        hungerTimer = hTimer;
+        excreteTimer = eTimer;
+        currentHungry = hungry;
+        currentExp = exp;
+        this.isGrowth = isGrowth;
     }
 
     // 다시 벡터로

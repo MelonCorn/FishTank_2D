@@ -29,19 +29,20 @@ public partial class FishTank
 
 
     // 저장된 물고기 데이터 기반으로 생성
-    public void SpawnSaveFishs(int fishID, Vector3 position)
+    public void SpawnSaveFishs(FishSaveData saveData)
     {
         // 번호에 맞는 데이터 장전
-        FishData targetData = fishData[fishID];
+        FishData targetData = fishData[saveData.fishID];
 
         // 풀에서 꺼냄
         FishAI newFish = fishPool.Get();
 
         // 위치 잡아줌
-        newFish.transform.position = position;
+        newFish.transform.position = saveData.GetVector3();
         
-        // 데이터랑 id 넣어줌
-        newFish.InitFishType(targetData, fishID);
+        // 데이터 넣어줌
+        newFish.InitFishType(targetData, saveData.fishID);
+        newFish.LoadData(saveData);
 
         // 물고기 수 갱신
         SetFishCountText();

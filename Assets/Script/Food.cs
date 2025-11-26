@@ -81,7 +81,7 @@ public class Food : MonoBehaviour
             if (other.TryGetComponent<FishAI>(out FishAI fish))
             {
                 // 배고픔 상태 아니면 무시
-                if (fish.Hungry() == false) return;
+                if (fish.CheckHungry() == false) return;
 
                 // 먹힘 체크
                 isEaten = true;

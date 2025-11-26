@@ -12,7 +12,7 @@ public class SaveManager : MonoBehaviour
 
     private void Start()
     {
-        // 시작하면 로딩
+        // 시작하면 불러오기 시도
         LoadGame();
     }
 
@@ -35,16 +35,11 @@ public class SaveManager : MonoBehaviour
         if (GameManager.Instance != null)
             data.currentMoney = GameManager.Instance.CurrentMoney;
 
-        // 가져온 물고기 데이터 추출해서 리스트에 추가
+        // 가져온 물고기 데이터마다
         foreach (FishAI fish in fishes)
         {
-            // 물고기 데이터 ID
-            int id = fish.ID;
-            // 물고기 위치
-            Vector3 pos = fish.transform.position;
-
-            // 물고기 저장 데이터 만들고 리스트에 추가
-            data.fishData.Add(new FishSaveData(id, pos));
+            // 저장 데이터 추출해서 리스트에 추가
+            data.fishData.Add(fish.GetFishData());
         }
         
         // 가져온 배설물 데이터 추출해서 리스트에 추가
@@ -60,12 +55,15 @@ public class SaveManager : MonoBehaviour
         // 직렬화 파일로 변환 저장 
         string dataString = JsonUtility.ToJson(data, true);
         File.WriteAllText(SavePath, dataString);
+        waitingUI.SetActive(false);
         Debug.Log($"저장 완료");
     }
 
     // 저장 파일 불러오기
     public void LoadGame()
     {
+        // 대기 UI
+        waitingUI.SetActive(true);
         // 파일 없으면 무시
         if (File.Exists(SavePath) == false)
         {
@@ -85,8 +83,8 @@ public class SaveManager : MonoBehaviour
         // 저장된 물고기 데이터마다
         foreach (var fishData in data.fishData)
         {
-            // id 에 맞는 타입 위치에 맞게 소환
-            fishTank.SpawnSaveFishs(fishData.fishID, fishData.GetVector3());
+            // 저장 데이터 기반으로 소환
+            fishTank.SpawnSaveFishs(fishData);
         }
 
         // 저장된 배설물 데이터마다

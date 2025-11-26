@@ -22,22 +22,27 @@ public class FishAI : MonoBehaviour
     private Transform foodTarget;                    // 감지된 먹이 정보
     private Vector2 movePoint;                       // 이동 포인트
 
-    private float waitTimer;                         // 현재 대기 시간
+    private float waitTimer;                         // 현재 대기 타이머
+    private float hungerTimer;                       // 현재 허기 타이머
+    private float excreteTimer;                      // 현재 배설 타이머
+
     private int currentHungry;                       // 현재 허기치
     private int currentExp;                          // 현재 성장치
 
+    private int id;                                  // 타입 번호
     private bool isGrowth;                           // 성장 여부
 
     private Coroutine detectFoodCoroutine;           // 먹이 감지 코루틴
     private WaitForSeconds detectFoodDelay;          // 감지 간격
 
-    private WaitForSeconds hungerDelay;              // 허기 간격
     private WaitUntil untilHungry;                   // 배고픔 상태 체크
-
-    private WaitForSeconds excreteDelay;             // 배설 간격
-
-    private int id;         // 저장용 번호
     public int ID => id;
+    public float WaitTimer => waitTimer;
+    public int CurrentHungry => currentHungry;
+    public int CurrentEXP => currentExp;
+    public bool IsGrowth => isGrowth;
+    public float HungerTimer => hungerTimer;
+    public float ExcreteTimer => excreteTimer;
 
     private void Awake()
     {
@@ -49,36 +54,45 @@ public class FishAI : MonoBehaviour
     public void Init(FishTank fishTank)
     {
         this.fishTank = fishTank;
-        untilHungry = new WaitUntil(() => Hungry());
+        untilHungry = new WaitUntil(() => currentHungry > fishData.maxHungry * 0.7f);
     }
 
     // 활성화 시 데이터 초기화
     public void InitFishType(FishData newData, int id)
     {
         fishData = newData;
+        this.id = id;
 
         // 먹이 감지 간격 설정
         detectFoodDelay = new WaitForSeconds(fishData.foodDetectInterval);
-        // 허기 간격 설정
-        hungerDelay = new WaitForSeconds(fishData.hungerInterval);
-        // 배설 간격 설정
-        excreteDelay = new WaitForSeconds(fishData.excreteInterval);
 
         // 치어 이미지 적용
         spriteRenderer.sprite = fishData.babySprite;
 
         // Idle 상태
         ChangeState(FishState.Idle);
-        
-        // 살아있는 동안 계속 돌아가므로 안 담아도 됨
-        StartCoroutine(Hunger());          // 허기 코루틴 시작
-        StartCoroutine(Defecation());      // 배변 코루틴 시작
+    }
+
+    // 불러온 데이터 적용
+    public void LoadData(FishSaveData saveData)
+    {
+        waitTimer = saveData.waitTimer;
+        hungerTimer = saveData.hungerTimer;
+        excreteTimer = saveData.excreteTimer;
+        currentHungry = saveData.currentHungry;
+        currentExp = saveData.currentExp;
+        isGrowth = saveData.isGrowth;
+
+        if(isGrowth == true)
+            spriteRenderer.sprite = fishData.sprite;
     }
 
     private void OnEnable()
     {
         currentHungry = 0;
         currentExp = 0;
+        hungerTimer = 0;
+        excreteTimer= 0;
 
         // 랜덤 색상
         spriteRenderer.color = new Color(Random.value, Random.value, Random.value, 1f);
@@ -97,6 +111,13 @@ public class FishAI : MonoBehaviour
                 ChaseFood();
                 break;
         }
+
+        // 살아있는 동안 계속
+        if (currentState == FishState.Dead) return;
+        // 허기
+        Hunger();
+        // 배설
+        Defecation();
     }
 
 
@@ -343,7 +364,7 @@ public class FishAI : MonoBehaviour
         currentHungry -= amount;
 
         // 배고픔 상태 체크
-        Hungry();
+        CheckHungry();
 
         // 0 이하면 0 고정
         if (currentHungry <= 0)
@@ -352,6 +373,8 @@ public class FishAI : MonoBehaviour
         // 잘못 먹어서 허기 최대 넘어가면 즉시 사망
         else if (currentHungry >= fishData.maxHungry)
         {
+            currentHungry = fishData.maxHungry;
+
             ChangeState(FishState.Dead);
             return false;
         }
@@ -367,34 +390,39 @@ public class FishAI : MonoBehaviour
 
 
     // 허기
-    private IEnumerator Hunger()
+    private void Hunger()
     {
-        // 사망 상태가 아니면 루프
-        while (currentState != FishState.Dead)
+        // 타이머가 간격 이하면
+        if (hungerTimer <= fishData.hungerInterval)
         {
-            // 허기 간격만큼 대기
-            yield return hungerDelay;
+            // 시간 계속 추가
+            hungerTimer += Time.deltaTime;
 
-            // 현재 허기 증가
-            currentHungry += fishData.hungerAmount;
-
-            // 배고픔 상태 체크
-            Hungry();
-
-            // 현재 허기가 최대 허기 이상이면
-            if (currentHungry >= fishData.maxHungry)
+            // 타이머가 간격 이상이 되면
+            if (hungerTimer >= fishData.hungerInterval)
             {
-                currentHungry = fishData.maxHungry;
-                // 사망 상태로 전환
-                ChangeState(FishState.Dead);
-                //코루틴 종료
-                yield break;
+                // 타이머 초기화
+                hungerTimer = 0f;
+
+                // 현재 허기 증가
+                currentHungry += fishData.hungerAmount;
+
+                // 상태 체크
+                CheckHungry();
+
+                // 현재 허기가 최대 허기 이상이면
+                if (currentHungry >= fishData.maxHungry)
+                {
+                    currentHungry = fishData.maxHungry;
+                    // 사망 상태로 전환
+                    ChangeState(FishState.Dead);
+                }
             }
         }
     }
 
     // 배고픔 상태 체크
-    public bool Hungry()
+    public bool CheckHungry()
     {
         // 허기 일정 이상이면 배고픔 상태
         bool isHungry = currentHungry >= fishData.maxHungry * 0.7f;
@@ -417,19 +445,23 @@ public class FishAI : MonoBehaviour
     #region Excrete
 
     // 배설
-    IEnumerator Defecation()
+    void Defecation()
     {
-        // 사망 상태가 아니면 루프
-        while (currentState != FishState.Dead)
+        // 배설 타이머가 간격 이하면
+        if(excreteTimer <= fishData.excreteInterval)
         {
-            // 배변 간격만큼 대기
-            yield return excreteDelay;
+            // 배설 타이머 증가
+            excreteTimer += Time.deltaTime;
 
-            // 대기 중 사망하면 루프 깨기
-            if (currentState == FishState.Dead) break;
+            // 간격 이상이 되면
+            if(excreteTimer >= fishData.excreteInterval)
+            {
+                // 리셋
+                excreteTimer = 0f;
 
-            // 현재 위치에 배설
-            fishTank.Excretion(transform.position);
+                // 배설
+                fishTank.Excretion(transform.position);
+            }
         }
     }
 
@@ -464,5 +496,20 @@ public class FishAI : MonoBehaviour
         float clampedY = Mathf.Clamp(position.y, fishTank.MinBounds.y, fishTank.MaxBounds.y);
 
         return new Vector2(clampedX, clampedY);
+    }
+
+    // 저장 데이터 추출
+    public FishSaveData GetFishData()
+    {
+        return new FishSaveData(
+            id : id,
+            pos : transform.position,
+            wTimer : waitTimer,
+            hTimer : hungerTimer,
+            eTimer : excreteTimer,
+            hungry : currentHungry,
+            exp : currentExp,
+            isGrowth : isGrowth
+            );
     }
 }

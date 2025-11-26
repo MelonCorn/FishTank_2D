@@ -20,24 +20,8 @@ public class SceneController : MonoBehaviour
         }
     }
 
-
-    public void NewGame()
-    {
-
-    }
-
-    public void LoadGame()
-    {
-
-    }
-
     public void LoadScene(int index)
     {
         SceneManager.LoadScene(index);
-    }
-
-    public void OnExit()
-    {
-        Application.Quit();
     }
 }
