@@ -76,15 +76,26 @@ public class FishAI : MonoBehaviour
     // 불러온 데이터 적용
     public void LoadData(FishSaveData saveData)
     {
+        // 성장 먼저 체크
+        isGrowth = saveData.isGrowth;
+        if (isGrowth == true)
+            spriteRenderer.sprite = fishData.sprite;
+
+        // 허기 체크
+        currentHungry = saveData.currentHungry;
+        if (currentHungry >= fishData.maxHungry)
+        {
+            ChangeState(FishState.Dead);
+            return;
+        }
+
+        // 살아남으면
         waitTimer = saveData.waitTimer;
         hungerTimer = saveData.hungerTimer;
         excreteTimer = saveData.excreteTimer;
-        currentHungry = saveData.currentHungry;
         currentExp = saveData.currentExp;
-        isGrowth = saveData.isGrowth;
+        movePoint = transform.position;
 
-        if(isGrowth == true)
-            spriteRenderer.sprite = fishData.sprite;
     }
 
     private void OnEnable()
