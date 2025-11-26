@@ -35,11 +35,16 @@ public class Food : MonoBehaviour
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void OnEnable()
     {
+        // 활성화될 때
+        // 랜덤 90도
+        int rand = Random.Range(1, 5);
+        spriteRenderer.transform.rotation = Quaternion.Euler(0f, 0f, 90f * rand);
+
         // 활성화 시 속도 기본
         currentSpeed = defaultSpeed;
     }

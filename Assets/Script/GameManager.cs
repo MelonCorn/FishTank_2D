@@ -17,28 +17,6 @@ public class GameManager : MonoBehaviour
     int happiness;               // 어항 행복도
     int money = 1000;            // 재화
 
-
-    //public int Happiness
-    //{
-    //    get => happiness;
-    //    private set
-    //    {
-    //        happiness = value;
-    //        OnHappinessChanged?.Invoke(happiness);
-    //    }
-    //}   // 행복도 변경 알림
-    //public int Money
-    //{
-    //    get => money;
-    //    private set
-    //    {
-    //        money = value;
-    //        OnMoneyChanged?.Invoke(money);
-    //    }
-    //}       // 재화 변경 알림
-
-
-
     private void Awake()
     {
         if (Instance == null)
@@ -49,15 +27,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // 시작 하면 한 번 알림
-        //OnMoneyChanged?.Invoke(money);
+        // 시작 하면 한 번 갱신
         UpdateMoneyUI(money);
-    }
-
-    // 행복도 증가
-    public void IncreaseHappiness()
-    {
-
     }
 
     // 재화 추가
