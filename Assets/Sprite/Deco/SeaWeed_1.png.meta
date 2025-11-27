@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ca261d3f1a6fd9b42994f2799ce7b255
+guid: 8421d4385c50cd54a8ccbf96b401e1f0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4539525770715284387
-    second: Speed_Baby_0
+      213: -3526052599651435504
+    second: SeaWeed_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,9 +49,9 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 7
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Speed_Baby_0
+      name: SeaWeed_1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 11
-        height: 11
+        width: 51
+        height: 169
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d5cb8cbec5d5001c0800000000000000
-      internalID: -4539525770715284387
+      spriteID: 01cfe6aa7d1f01fc0800000000000000
+      internalID: -3526052599651435504
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1861ad895bc9e7d49a20e44600f278a4
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Speed_Baby_0: -4539525770715284387
+      SeaWeed_1_0: -3526052599651435504
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

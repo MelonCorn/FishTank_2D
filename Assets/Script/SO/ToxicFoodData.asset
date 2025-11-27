@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodData
   itemName: "\uC720\uB3C5\uC131 \uBB3C\uC9C8"
   cost: 15
-  sprite: {fileID: 8980552705043034508, guid: 3d9a8470eba4b2d4ca1b98ae5c4d5bb2, type: 3}
+  sprite: {fileID: 21300000, guid: 3d9a8470eba4b2d4ca1b98ae5c4d5bb2, type: 3}
   info: "<color=#f00000>\uC808\uB300 \uC12D\uCDE8\uD558\uC9C0 \uB9C8\uC138\uC694.</color>\n\n\uB108\uBB34
     \uB9DB\uC788\uC5B4\uC11C \uAE30\uC808\uD560\uC9C0\uB3C4 \uBAA8\uB985\uB2C8\uB2E4.\n<color=#b3b3b3><size=18>\uC601\uC6D0\uD788\uC694..</size></color>\n\n\uC6D0\uCE58
     \uC54A\uB294 \uBB3C\uACE0\uAE30\uB4E4\uC744 \uC815\uB9AC\uD560 \uB54C \uC0AC\uC6A9\uD569\uB2C8\uB2E4."

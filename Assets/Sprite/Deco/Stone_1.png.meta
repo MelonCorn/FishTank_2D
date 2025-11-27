@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ca261d3f1a6fd9b42994f2799ce7b255
+guid: 84ceff4ebf4501b448de2a7291cb3d22
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4539525770715284387
-    second: Speed_Baby_0
+      213: -3606137100890032134
+    second: Stone_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,9 +49,9 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 7
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Speed_Baby_0
+      name: Stone_1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 11
-        height: 11
+        width: 62
+        height: 44
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d5cb8cbec5d5001c0800000000000000
-      internalID: -4539525770715284387
+      spriteID: af7b712b96d64fdc0800000000000000
+      internalID: -3606137100890032134
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1861ad895bc9e7d49a20e44600f278a4
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Speed_Baby_0: -4539525770715284387
+      Stone_1_0: -3606137100890032134
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FishData
   itemName: "\uBA39\uBCF4"
   cost: 55
-  sprite: {fileID: 8151895571227466268, guid: 2bc33fc2b2deb154ba980819d3c5b75c, type: 3}
+  sprite: {fileID: 21300000, guid: 2bc33fc2b2deb154ba980819d3c5b75c, type: 3}
   info: "\uBC29\uAE08 \uBC25\uC744 \uC92C\uB294\uB370 \uC65C \uB610 \uB2EC\uB77C\uACE0
     \uD560\uAE4C\uC694..?\n\n\uC704\uC7A5\uC774 <color=#ff82ff><b>\uBE14\uB799\uD640</b></color>\uACFC
     \uC5F0\uACB0\uB418\uC5B4 \uC788\uB2E4\uB294 \uC18C\uBB38\uC774 \uC788\uC2B5\uB2C8\uB2E4.\n\n\uC2DD\uC0AC\uB97C
@@ -33,6 +33,6 @@ MonoBehaviour:
   detectFoodLayer:
     serializedVersion: 2
     m_Bits: 128
-  babySprite: {fileID: -163317453185846821, guid: d4dd96e7f992943449ffce5c26ff002c, type: 3}
-  hungrySprite: {fileID: -1671663248283000969, guid: ef777b3148ba2e74088c5b6c00eaf6b5, type: 3}
-  deadSprite: {fileID: -7411738981383325484, guid: c5c4dba40ead1694e9df502e11936344, type: 3}
+  babySprite: {fileID: 21300000, guid: d4dd96e7f992943449ffce5c26ff002c, type: 3}
+  hungrySprite: {fileID: 21300000, guid: ef777b3148ba2e74088c5b6c00eaf6b5, type: 3}
+  deadSprite: {fileID: 21300000, guid: c5c4dba40ead1694e9df502e11936344, type: 3}

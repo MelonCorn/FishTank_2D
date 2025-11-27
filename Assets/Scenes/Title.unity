@@ -839,7 +839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2512128183154619787, guid: bedabdf5ebff2b04aab038c8ca9fd37d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bedabdf5ebff2b04aab038c8ca9fd37d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1802,8 +1802,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6461550406291203205, guid: dd6de2d5fe6e8f240b01e36a69830087, type: 3}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+      - m_Target: {fileID: 1370749670}
+        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
         m_MethodName: OnExit
         m_Mode: 1
         m_Arguments:
@@ -2314,7 +2314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4369572136041557648, guid: a7a9fd36c69ab924f9adc5bed890fea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a7a9fd36c69ab924f9adc5bed890fea6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
