@@ -58,7 +58,7 @@ public class CleanTool : MonoBehaviour
             if(other.TryGetComponent<Excrement>(out Excrement excrement))
             {
                 // 재화 추가
-                GameManager.Instance.AddMoney(gainMoney);
+                GameManager.Instance.CurrentMoney += gainMoney;
                 // 비활성화
                 excrement.Despawn();
             }

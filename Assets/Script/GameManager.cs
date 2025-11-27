@@ -41,13 +41,6 @@ public class GameManager : MonoBehaviour
         CurrentMoney = 1000;
     }
 
-    // 재화 추가
-    public void AddMoney(int amount)
-    {
-        // 추가
-        CurrentMoney += amount;
-    }
-
     // 결제 시도
     public bool TryPurchase(int cost)
     {

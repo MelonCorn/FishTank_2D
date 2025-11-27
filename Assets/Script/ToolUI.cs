@@ -4,7 +4,10 @@ using UnityEngine;
 public class ToolUI : GridUI, ICreateButton
 {
     [SerializeField] FoodManager foodManager;
+    [Header("도구 리스트")]
     [SerializeField] ToolData cleanToolData;
+
+    [Header("선택 하이라이트")]
     [SerializeField] RectTransform selectedEdge;    // 선택 오브젝트
 
     private int currentIndex = 0;           // 몇 번째 도구인지
@@ -38,7 +41,11 @@ public class ToolUI : GridUI, ICreateButton
         tools.Add(cleanToolData);             
 
         // 생성 실행 (SO배열, 함수)
-        GenerateButtons(tools.ToArray(), SelectTool, OnHover);
+        GenerateButtons(
+            datas : tools.ToArray(),
+            clickAction : SelectTool,
+            hoverAction : OnHover
+            );
     }
     
     // 휠 굴렸을 때

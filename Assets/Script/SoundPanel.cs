@@ -18,6 +18,9 @@ public class SoundPanel : MonoBehaviour
 
     private void Start()
     {
+        // 사운드 매니저 없으면 무시
+        if (SoundManager.Instance == null) return;
+
         // 매니저에서 볼륨 불러오기
         if (masterSlider != null)
             masterSlider.value = SoundManager.Instance.MasterVolume;

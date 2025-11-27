@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GridUI : MonoBehaviour
 {
+    protected UIManager uiManager;
     protected List<GridButton> buttons = new();  // 버튼 목록
 
-    [SerializeField] protected Transform buttonGrid;     // 버튼 그리드
-    [SerializeField] protected GridButton buttonPrefab;  // 버튼 프리팹
+    [Header("버튼 그리드")]
+    [SerializeField] protected Transform buttonGrid;
 
-    protected UIManager uiManager;
 
 
     private void Awake()
@@ -23,7 +23,7 @@ public class GridUI : MonoBehaviour
         for (int i = 0; i < datas.Length; i++)
         {
             // 버튼 생성 , 그리드 자식으로
-            GridButton button = Instantiate(buttonPrefab, buttonGrid);
+            GridButton button = Instantiate(uiManager.ButtonPrefab, buttonGrid);
 
             // 버튼 세팅 (데이터, 번호, 클릭, 호버)
             button.Setting(datas[i], i, clickAction, hoverAction);
@@ -32,7 +32,6 @@ public class GridUI : MonoBehaviour
             buttons.Add(button);
         }
     }
-
     // 버튼 호버
     protected void OnHover(ItemData data, bool isActive)
     {

@@ -3,14 +3,21 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-
+    [Header("패널")]
     [SerializeField] private RectTransform shopPanel;   // 상점 패널
-    [SerializeField] private RectTransform foodPanel;   // 먹이 패널
+    [SerializeField] private RectTransform toolPanel;   // 도구 패널
 
+    [Header("여닫이 위치")]
     [SerializeField] private RectTransform openPos;  // 열렸을 때 위치
     [SerializeField] private RectTransform closePos; // 닫혔을 때 위치
 
+    [Header("슬라이드 속도")]
     [SerializeField] float slideSpeed = 10f;  // 슬라이드 속도
+
+    [Header("버튼 프리팹")]
+    [SerializeField] GridButton buttonPrefab;         // 버튼 프리팹
+    [Header("버튼 정보 패널")]
+    [SerializeField] HoverPanel hoverPanel;           // 정보 패널
 
     private bool isShopOpen = false;                  // 상점 패널 상태
     private bool isFoodOpen = false;                  // 먹이 패널 상태
@@ -19,7 +26,8 @@ public class UIManager : MonoBehaviour
     private Coroutine foodCoroutine;         // 먹이슬라이드
 
     ICreateButton[] createButtonUI;          // 버튼 생성 스크립트
-    public HoverPanel hoverPanel;            // 정보 패널
+
+    public GridButton ButtonPrefab => buttonPrefab;
 
     private void Awake()
     {
@@ -55,7 +63,7 @@ public class UIManager : MonoBehaviour
         // x만
         // 시작할 땐 닫힘 위치로
         shopPanel.anchoredPosition = new Vector2(closePos.anchoredPosition.x, shopPanel.anchoredPosition.y);
-        foodPanel.anchoredPosition = new Vector2(closePos.anchoredPosition.x, foodPanel.anchoredPosition.y);
+        toolPanel.anchoredPosition = new Vector2(closePos.anchoredPosition.x, toolPanel.anchoredPosition.y);
         // 닫힘
         isShopOpen = false;
         isFoodOpen = false;
@@ -75,7 +83,7 @@ public class UIManager : MonoBehaviour
     {
         isFoodOpen = !isFoodOpen;
 
-        foodCoroutine = TogglePanel(foodPanel, isFoodOpen, foodCoroutine);
+        foodCoroutine = TogglePanel(toolPanel, isFoodOpen, foodCoroutine);
     }
 
 
