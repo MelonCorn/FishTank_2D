@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: PremiumFoodData
   m_EditorClassIdentifier: Assembly-CSharp::FoodData
   itemName: "\uC288\uD37C\uBCFC"
-  cost: 25
+  cost: 15
   sprite: {fileID: 21300000, guid: 3a9d1e6b36328974b8590598d3781d64, type: 3}
   info: "\uD55C \uC785\uB9CC \uBA39\uC5B4\uB3C4 \uB0B4\uC77C \uC544\uCE68\uAE4C\uC9C0
     \uC18C\uD654\uC2DC\uCF1C\uC57C \uD560 \uC815\uB3C4\uC785\uB2C8\uB2E4.\n\n\uBC30\uAC00
     \uBE75\uBE75\uD574\uC838\uC11C \uBC25 \uB2EC\uB77C\uACE0 \uBCF4\uCC44\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.\n\n<color=#ffa500>\uACBD\uACE0
     : \uBB3C\uACE0\uAE30\uAC00 \uC0B4\uCC14 \uC218 \uC788\uC2B5\uB2C8\uB2E4.</color>"
   exp: 30
-  fill: 100
+  fill: 200
   lifeTime: 10
-  sinkSpeed: 0.4
+  sinkSpeed: 0.3
   layer:
     serializedVersion: 2
     m_Bits: 128

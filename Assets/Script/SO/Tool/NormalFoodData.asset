@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NormalFoodData
   m_EditorClassIdentifier: Assembly-CSharp::FoodData
   itemName: "\uBD88\uB7C9\uC2DD\uD488"
-  cost: 5
+  cost: 3
   sprite: {fileID: 21300000, guid: 889a90f3fdeabbd40a0c21a1d39f1ff7, type: 3}
   info: "\uC131\uBD84\uD45C\uAC00 \uC5C6\uB294 <color=#fff000>\uC815\uCCB4\uBD88\uBA85\uC758
     \uAC00\uB8E8</color>\uC785\uB2C8\uB2E4.\n\n\uBA39\uAE34 \uD558\uB294\uB370 \uC601\uC591\uAC00\uB294
