@@ -117,4 +117,11 @@ public class SoundManager : MonoBehaviour
             currentBgmIndex = (currentBgmIndex + 1) % bgms.Length;
         }
     }
+
+    // 효과음 재생
+    public void PlaySFX(AudioClip clip)
+    {
+        // 한 번
+        sfxSource.PlayOneShot(clip);
+    }
 }

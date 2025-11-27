@@ -22,13 +22,13 @@ MonoBehaviour:
   minWaitTime: 0.1
   maxWaitTime: 2
   chaseMultiplier: 2
-  detectRange: 2
+  detectRange: 3
   foodDetectInterval: 0.1
   hungerAmount: 2
   hungerInterval: 1
-  maxHungry: 70
-  excreteInterval: 20
-  requireExp: 50
+  maxHungry: 150
+  excreteInterval: 12
+  requireExp: 150
   detectFoodLayer:
     serializedVersion: 2
     m_Bits: 128

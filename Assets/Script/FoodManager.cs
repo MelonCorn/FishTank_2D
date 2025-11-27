@@ -11,6 +11,8 @@ public class FoodManager : MonoBehaviour
     [SerializeField] FoodData[] foodData;           // 먹이 데이터 목록
     [SerializeField] int defaultSize = 20;          // 초기화 수
 
+    [SerializeField] AudioClip foodClip;            // 먹이 놓는 효과음
+
 
     private FoodData currentFood;                   // 선택된 먹이
 
@@ -104,6 +106,9 @@ public class FoodManager : MonoBehaviour
 
         // 선택된 먹이 데이터로 초기화
         newFood.InitFoodType(currentFood);
+
+        // 효과음 재생
+        SoundManager.Instance.PlaySFX(foodClip);
     }
 
     // 먹이 선택

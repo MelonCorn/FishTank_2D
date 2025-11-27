@@ -8,6 +8,8 @@ public class DecoUI : GridUI, ICreateButton, ISaveable
     [Header("장식 리스트")]
     [SerializeField] Deco[] decos;
 
+    [SerializeField] AudioClip decoClip;       // 구매 효과음
+
 
     //---------------------------------------------
 
@@ -70,6 +72,9 @@ public class DecoUI : GridUI, ICreateButton, ISaveable
 
         // 구매 시도
         if (GameManager.Instance.TryPurchase(deco.data.cost) == false) return;
+
+        // 효과음 재생
+        SoundManager.Instance.PlaySFX(decoClip);
 
         // 버튼 비활성화
         buttons[index].GetComponent<Button>().interactable = false;

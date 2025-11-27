@@ -3302,6 +3302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
   waitingUI: {fileID: 2016741361}
+  saveClip: {fileID: 8300000, guid: 04535c9bee857ad4ca7b0d53802a4456, type: 3}
 --- !u!1 &946518736
 GameObject:
   m_ObjectHideFlags: 0
@@ -4876,6 +4877,7 @@ MonoBehaviour:
     target: {fileID: 2137701901}
   - data: {fileID: 11400000, guid: a3845dc6f5eac124fb83ebb0946caebd, type: 2}
     target: {fileID: 1807071175}
+  decoClip: {fileID: 8300000, guid: 4a084b674e834524dbe0aaf331d1fa04, type: 3}
 --- !u!1 &1659988474
 GameObject:
   m_ObjectHideFlags: 0
@@ -5278,6 +5280,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1731404367}
   - component: {fileID: 1731404366}
+  - component: {fileID: 1731404369}
+  - component: {fileID: 1731404368}
   m_Layer: 0
   m_Name: FishTank
   m_TagString: Untagged
@@ -5309,6 +5313,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5b13bd31ffbc26d4e9ae1f24b1d3928e, type: 3}
   - {fileID: 21300000, guid: df773350e429d5140a3a185721cd4b4e, type: 3}
   - {fileID: 21300000, guid: 1612d465466b73343af68440618d9140, type: 3}
+  hungrySource: {fileID: 1731404369}
+  dieSource: {fileID: 1731404368}
+  addClip: {fileID: 8300000, guid: 35a7467343741f84d9068097e86fe2c7, type: 3}
   waterArea: {fileID: 2102702531}
 --- !u!4 &1731404367
 Transform:
@@ -5325,6 +5332,200 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1846907211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1731404368
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731404365}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -2396955101146745621, guid: 437e079436a7d94429ffd02e5b4cc83e, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: fabcf7f267b49fa40aa86719c946e3c5, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1731404369
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731404365}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -2396955101146745621, guid: 437e079436a7d94429ffd02e5b4cc83e, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: ee66c82e831093641943d2ae42046262, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1807071175
 GameObject:
   m_ObjectHideFlags: 0
@@ -5921,6 +6122,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a1b56c5402ae9334996a675991edbd16, type: 2}
   - {fileID: 11400000, guid: c0179eff9a061fa4dbaaa932bec463e6, type: 2}
   defaultSize: 10
+  foodClip: {fileID: 8300000, guid: 3c65fdb2f69526d44b9f982a2d6c6a93, type: 3}
 --- !u!1 &2079595954
 GameObject:
   m_ObjectHideFlags: 0

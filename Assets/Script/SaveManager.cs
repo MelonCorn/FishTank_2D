@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    [SerializeField] GameObject waitingUI;      // 저장 로드 대기 UI
+    [SerializeField] GameObject waitingUI;     // 저장, 불러오기 대기 UI
+    [SerializeField] AudioClip saveClip;       // 저장 효과음
 
     private ISaveable[] saveables;             // 저장되는 스크립트
 
@@ -31,6 +32,9 @@ public class SaveManager : MonoBehaviour
     // 파일 저장 (FishTank에서 활성화 물고기 리스트, 배설물 리스트 보내줌)
     public void SaveGame()
     {
+        // 효과음 재생
+        SoundManager.Instance.PlaySFX(saveClip);
+
         // 대기 UI On
         waitingUI.SetActive(true);
 

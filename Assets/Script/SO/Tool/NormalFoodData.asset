@@ -19,8 +19,8 @@ MonoBehaviour:
     \uAC00\uB8E8</color>\uC785\uB2C8\uB2E4.\n\n\uBA39\uAE34 \uD558\uB294\uB370 \uC601\uC591\uAC00\uB294
     \uAC70\uC758 \uC5C6\uC2B5\uB2C8\uB2E4..\n\n\uAC04\uC2DD \uC815\uB3C4\uB85C \uC0DD\uAC01\uD558\uC138\uC694
     !"
-  exp: 1
-  fill: 25
+  exp: 5
+  fill: 40
   lifeTime: 10
   sinkSpeed: 0.5
   layer:

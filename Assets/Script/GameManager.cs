@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        CurrentMoney = 1000;
+        CurrentMoney = 200;
     }
 
     // 결제 시도

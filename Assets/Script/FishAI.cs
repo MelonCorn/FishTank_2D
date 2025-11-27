@@ -182,6 +182,8 @@ public class FishAI : MonoBehaviour
                 spriteRenderer.color = Color.white;
                 // 하강 후 반납
                 StartCoroutine(Sink());
+                // 사망 효과음
+                fishTank.PlayDieSound();
                 break;
         }
     }
@@ -441,12 +443,19 @@ public class FishAI : MonoBehaviour
         // 허기 일정 이상이면 배고픔 상태
         bool isHungry = currentHungry >= fishData.maxHungry * 0.7f;
 
-       // 배고픔 상태면 아이콘 변경
+       // 배고픔 상태면
        if (isHungry == true)
-           stateIcon.sprite = fishData.hungrySprite;
-       
-       // 배고픔 상태에 따라 아이콘 활성화
-       stateIcon.gameObject.SetActive(isHungry);
+        {
+            // 아이콘 변경
+            stateIcon.sprite = fishData.hungrySprite;
+
+            // 허기 효과음
+            if (stateIcon.gameObject.activeSelf == false)
+                fishTank.PlayHungrySound();
+        }
+
+        // 배고픔 상태에 따라 아이콘 활성화
+        stateIcon.gameObject.SetActive(isHungry);
 
         return isHungry;
     }

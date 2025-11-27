@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -22,7 +23,14 @@ public partial class FishTank : MonoBehaviour, ISaveable
     [SerializeField] int excrementPoolDefaultSize = 100;// 초기화 수
     [SerializeField] Sprite[] excrementSprites;    // 배설물 스프라이트
 
-    [SerializeField] SpriteRenderer waterArea;          // 수조 구역
+    [Header("물고기 전용 오디오")]
+    [SerializeField] AudioSource hungrySource;     // 허기
+    [SerializeField] AudioSource dieSource;        // 사망
+    [Space]
+    [SerializeField] AudioClip addClip;            // 추가 클립
+
+    [Header("수조 구역")]
+    [SerializeField] SpriteRenderer waterArea;
 
     public Vector2 MinBounds => minBounds;
     public Vector2 MaxBounds => maxBounds;
@@ -167,6 +175,9 @@ public partial class FishTank : MonoBehaviour, ISaveable
         // 물고기 수 텍스트
         SetFishCountText();
 
+        // 추가 효과음 재생
+        SoundManager.Instance.PlaySFX(addClip);
+
     }
 
     // 물고기 수 갱신
@@ -197,6 +208,22 @@ public partial class FishTank : MonoBehaviour, ISaveable
         // padding 만큼 더하고 빼서 안쪽으로 들임
         minBounds = new Vector2(bounds.min.x + padding, bounds.min.y + padding);
         maxBounds = new Vector2(bounds.max.x - padding, bounds.max.y - padding);
+    }
+
+    // 물고기 허기 효과음 재생
+    public void PlayHungrySound()
+    {
+        // 재생중이지 않을 때만
+        if (hungrySource.isPlaying == false)
+            hungrySource.Play();
+    }
+
+    // 물고기 사망 효과음 재생
+    public void PlayDieSound()
+    {
+        // 재생중이지 않을 때만
+        if(dieSource.isPlaying == false)
+            dieSource.Play();
     }
 
 }

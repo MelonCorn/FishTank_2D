@@ -20,7 +20,7 @@ MonoBehaviour:
     \uBE75\uBE75\uD574\uC838\uC11C \uBC25 \uB2EC\uB77C\uACE0 \uBCF4\uCC44\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.\n\n<color=#ffa500>\uACBD\uACE0
     : \uBB3C\uACE0\uAE30\uAC00 \uC0B4\uCC14 \uC218 \uC788\uC2B5\uB2C8\uB2E4.</color>"
   exp: 30
-  fill: 70
+  fill: 100
   lifeTime: 10
   sinkSpeed: 0.4
   layer:
