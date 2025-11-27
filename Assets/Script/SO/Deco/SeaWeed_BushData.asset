@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SeaWeed_BushData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "\uB364\uBD88 \uD574\uCD08"
-  cost: 70
+  cost: 150
   sprite: {fileID: 21300000, guid: 7e2b9d7d89ca67842a95fa38edf6576c, type: 3}
   info: "\uD587\uC0B4\uC744 \uBC1B\uC544 \uD48D\uC131\uD558\uAC8C \uC790\uB780 \uD574\uCD08
     \uB364\uBD88\uC785\uB2C8\uB2E4.\n\n\uC218\uC870 \uBC14\uB2E5\uC744 \uC544\uB291\uD558\uAC8C

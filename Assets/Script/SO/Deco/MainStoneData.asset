@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MainStoneData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "\uC544\uCE58\uD615 \uB3CC"
-  cost: 100
+  cost: 200
   sprite: {fileID: 21300000, guid: 8c3b5760186bf0340a601f04feb55a6d, type: 3}
   info: "\uC544\uB984\uB2E4\uC6B4 \uACE1\uC120\uC744 \uC790\uB791\uD558\uB294 \uB3CC\uC785\uB2C8\uB2E4.\n\n\uC138\uC6D4\uC758
     \uD754\uC801\uC744 \uBA38\uAE08\uACE0 \uC218\uC870\uC758 \uC911\uC2EC\uC744 \uBB35\uBB35\uD788

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RedCoralData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "\uBD89\uC740 \uC0B0\uD638"
-  cost: 40
+  cost: 100
   sprite: {fileID: 21300000, guid: 4e3d035b36c1aea4fb1355752302d7e5, type: 3}
   info: "\uC218\uC870\uC5D0\uC11C \uC0B4\uC544\uB0A8\uAE30\uC704\uD574 \uC5F4\uC815\uC744
     \uD488\uACE0 \uC790\uB77C \uAC15\uB82C\uD55C \uBD89\uC740\uBE5B\uC744 \uB755\uB2C8\uB2E4.\n\n\uD478\uB978
