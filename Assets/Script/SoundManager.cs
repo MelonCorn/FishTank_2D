@@ -115,6 +115,8 @@ public class SoundManager : MonoBehaviour
 
             // 다음 번호
             currentBgmIndex = (currentBgmIndex + 1) % bgms.Length;
+
+            yield return null;
         }
     }
 
