@@ -89,7 +89,7 @@ public class FishAI : MonoBehaviour
         if (currentHungry >= fishData.maxHungry)
         {
             ChangeState(FishState.Dead);
-            return;
+            return; 
         }
 
         // 살아남으면

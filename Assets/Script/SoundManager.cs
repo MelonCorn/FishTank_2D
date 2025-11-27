@@ -37,7 +37,11 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
+
+    private void OnEnable()
+    {
         // 볼륨 불러오기
         LoadVolumePrefs();
         // 배경음 재생 조건

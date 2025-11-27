@@ -145,7 +145,6 @@ public class InputManager : MonoBehaviour
     // 먹이 타입 변경
     public void OnChangeType(InputAction.CallbackContext ctx)
     {
-        Debug.Log("스크롤 / input");
         // 먹이, 청소 상태 아니면 무시
         if (currentState != InputState.SpawnFood && currentState != InputState.CleanTool) return;
 

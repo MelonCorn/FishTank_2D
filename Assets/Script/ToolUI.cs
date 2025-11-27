@@ -51,7 +51,6 @@ public class ToolUI : GridUI, ICreateButton
     // 휠 굴렸을 때
     private void OnScroll(int dir)
     {
-        Debug.Log("스크롤 / tool");
         // 입력 방향 사용해서 다음 번호
         int nextIndex = currentIndex + dir;
 

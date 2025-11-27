@@ -21,16 +21,13 @@ public class SoundPanel : MonoBehaviour
         // 사운드 매니저 없으면 무시
         if (SoundManager.Instance == null) return;
 
-        // 매니저에서 볼륨 불러오기
-        if (masterSlider != null)
-            masterSlider.value = SoundManager.Instance.MasterVolume;
-        if (bgmSlider != null)
-            bgmSlider.value = SoundManager.Instance.BGMVolume;
-        if (sfxSlider != null)
-            sfxSlider.value = SoundManager.Instance.SFXVolume;
+        // 슬라이더 이벤트 연결
+        masterSlider?.onValueChanged.AddListener(SoundManager.Instance.SetMasterVolume);
+        bgmSlider?.onValueChanged.AddListener(SoundManager.Instance.SetBGMVolume);
+        sfxSlider?.onValueChanged.AddListener(SoundManager.Instance.SetSFXVolume);
 
         // 버튼 이벤트 연결
-        applyButton?.onClick.AddListener(()=>
+        applyButton?.onClick.AddListener(() =>
         {
             if (InputManager.Instance != null)
                 InputManager.Instance.SetPause();
@@ -38,10 +35,13 @@ public class SoundPanel : MonoBehaviour
                 SetActivePanel();
         });
 
-        // 슬라이더 이벤트 연결
-        masterSlider?.onValueChanged.AddListener(SoundManager.Instance.SetMasterVolume);
-        bgmSlider?.onValueChanged.AddListener(SoundManager.Instance.SetBGMVolume);
-        sfxSlider?.onValueChanged.AddListener(SoundManager.Instance.SetSFXVolume);
+        // 매니저에서 볼륨 불러오기
+        if (masterSlider != null)
+            masterSlider.value = SoundManager.Instance.MasterVolume;
+        if (bgmSlider != null)
+            bgmSlider.value = SoundManager.Instance.BGMVolume;
+        if (sfxSlider != null)
+            sfxSlider.value = SoundManager.Instance.SFXVolume;
     }
 
     // 활성화 상태 변경
