@@ -2699,6 +2699,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0.49995
       objectReference: {fileID: 0}
+    - target: {fileID: 8114450513169939227, guid: 4d4a68e1cd98fc24bae18af61f0f4d26, type: 3}
+      propertyPath: m_Color.a
+      value: 0.98039216
+      objectReference: {fileID: 0}
     - target: {fileID: 9151334565868794276, guid: 4d4a68e1cd98fc24bae18af61f0f4d26, type: 3}
       propertyPath: m_Name
       value: SoundPanel

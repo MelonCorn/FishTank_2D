@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEditor.PlayerSettings.WSA;
 
 public class FishUI : GridUI, ICreateButton
 {
