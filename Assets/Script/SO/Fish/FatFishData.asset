@@ -25,7 +25,7 @@ MonoBehaviour:
   chaseMultiplier: 1.5
   detectRange: 5
   foodDetectInterval: 0.1
-  hungerAmount: 4
+  hungerAmount: 5
   hungerInterval: 1
   maxHungry: 200
   excreteInterval: 7

@@ -27,7 +27,7 @@ MonoBehaviour:
   foodDetectInterval: 0.1
   hungerAmount: 1
   hungerInterval: 1
-  maxHungry: 100
+  maxHungry: 80
   excreteInterval: 15
   requireExp: 100
   detectFoodLayer:

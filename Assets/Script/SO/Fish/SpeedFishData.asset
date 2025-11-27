@@ -24,10 +24,10 @@ MonoBehaviour:
   chaseMultiplier: 2
   detectRange: 3
   foodDetectInterval: 0.1
-  hungerAmount: 2
+  hungerAmount: 1
   hungerInterval: 1
-  maxHungry: 150
-  excreteInterval: 12
+  maxHungry: 110
+  excreteInterval: 9
   requireExp: 150
   detectFoodLayer:
     serializedVersion: 2
