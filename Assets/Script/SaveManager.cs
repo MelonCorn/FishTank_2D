@@ -1,14 +1,25 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    [SerializeField] FishTank fishTank;     // 수조
-    [SerializeField] GameObject waitingUI;  // 저장 로드 대기 UI
+    [SerializeField] GameObject waitingUI;      // 저장 로드 대기 UI
+
+    private ISaveable[] saveables;             // 저장되는 스크립트
 
     // 저장 경로
     public static string SavePath => Path.Combine(Application.persistentDataPath, "FishTank_SaveData.json");
+
+    private void Awake()
+    {
+        // 시작하면 부모의 모든 하위 객체에서
+        // 저장 가능한 스크립트 가져옴
+        saveables = transform.parent.GetComponentsInChildren<ISaveable>();
+    }
 
     private void Start()
     {
@@ -20,41 +31,27 @@ public class SaveManager : MonoBehaviour
     // 파일 저장 (FishTank에서 활성화 물고기 리스트, 배설물 리스트 보내줌)
     public void SaveGame()
     {
-        // 대기 UI
+        // 대기 UI On
         waitingUI.SetActive(true);
-
-        // 활성화 물고기 리스트
-        List<FishAI> fishes = fishTank.GetActiveItems<FishAI>();
-        // 활성화 배설물 리스트
-        List<Excrement> excrements = fishTank.GetActiveItems<Excrement>();
 
         // 저장 데이터 하나 생성
         SaveData data = new SaveData();
-        
+
+        // 저장되는 스크립트들 돌아다니면서 데이터 수집
+        foreach (ISaveable saveAble in saveables)
+        {
+            saveAble.Save(data);
+        }
+
         // 재화 가져오기
         if (GameManager.Instance != null)
             data.currentMoney = GameManager.Instance.CurrentMoney;
 
-        // 가져온 물고기 데이터마다
-        foreach (FishAI fish in fishes)
-        {
-            // 저장 데이터 추출해서 리스트에 추가
-            data.fishData.Add(fish.GetFishData());
-        }
-        
-        // 가져온 배설물 데이터 추출해서 리스트에 추가
-        foreach (Excrement excrement in excrements)
-        {
-            // 배설물 위치
-            Vector3 pos = excrement.transform.position;
-
-            // 배설물 저장 데이터 만들고 리스트에 추가
-            data.excrementPosData.Add(pos);
-        }
-
         // 직렬화 파일로 변환 저장 
         string dataString = JsonUtility.ToJson(data, true);
         File.WriteAllText(SavePath, dataString);
+
+        // 대기 UI Off
         waitingUI.SetActive(false);
         Debug.Log($"저장 완료");
     }
@@ -62,11 +59,13 @@ public class SaveManager : MonoBehaviour
     // 저장 파일 불러오기
     public void LoadGame()
     {
-        // 대기 UI
+        // 대기 UI On
         waitingUI.SetActive(true);
+
         // 파일 없으면 무시
         if (File.Exists(SavePath) == false)
         {
+            // 대기 UI Off
             waitingUI.SetActive(false);
             return;
         }
@@ -80,22 +79,15 @@ public class SaveManager : MonoBehaviour
         if (GameManager.Instance != null)
             GameManager.Instance.CurrentMoney = data.currentMoney;
 
-        // 저장된 물고기 데이터마다
-        foreach (var fishData in data.fishData)
+        // 저장되는 스크립트들 돌아다니면서 데이터 뿌리기
+        foreach (ISaveable saveAble in saveables)
         {
-            // 저장 데이터 기반으로 소환
-            fishTank.SpawnSaveFishs(fishData);
+            saveAble.Load(data);
         }
 
-        // 저장된 배설물 데이터마다
-        foreach (var pos in data.excrementPosData)
-        {
-            // 위치에 맞게 소환
-            fishTank.SpawnSaveExcrements(pos);
-        }
-
-        // 대기 UI
+        // 대기 UI Off
         waitingUI.SetActive(false);
+
         Debug.Log("불러오기 완료");
     }
 

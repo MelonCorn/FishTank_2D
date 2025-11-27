@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412ba1f2556829d41bbaa41b542812f4, type: 3}
+  m_Name: RedCoralData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: "\uBD89\uC740 \uC0B0\uD638"
+  cost: 40
+  sprite: {fileID: 21300000, guid: 4e3d035b36c1aea4fb1355752302d7e5, type: 3}
+  info: "\uC218\uC870\uC5D0\uC11C \uC0B4\uC544\uB0A8\uAE30\uC704\uD574 \uC5F4\uC815\uC744
+    \uD488\uACE0 \uC790\uB77C \uAC15\uB82C\uD55C \uBD89\uC740\uBE5B\uC744 \uB755\uB2C8\uB2E4.\n\n\uD478\uB978
+    \uBB3C\uC18D\uC5D0\uC11C \uC2DC\uC120\uC744 \uC0AC\uB85C\uC7A1\uC2B5\uB2C8\uB2E4."

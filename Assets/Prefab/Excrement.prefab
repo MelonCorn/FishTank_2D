@@ -121,9 +121,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Stool
   sprites:
-  - {fileID: -7126673854887431311, guid: 5b13bd31ffbc26d4e9ae1f24b1d3928e, type: 3}
-  - {fileID: 9088914640182368119, guid: df773350e429d5140a3a185721cd4b4e, type: 3}
-  - {fileID: -5127379109144238273, guid: 1612d465466b73343af68440618d9140, type: 3}
+  - {fileID: 21300000, guid: 5b13bd31ffbc26d4e9ae1f24b1d3928e, type: 3}
+  - {fileID: 21300000, guid: df773350e429d5140a3a185721cd4b4e, type: 3}
+  - {fileID: 21300000, guid: 1612d465466b73343af68440618d9140, type: 3}
 --- !u!1 &4298021901870774260
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +203,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 199
-  m_Sprite: {fileID: -7126673854887431311, guid: 5b13bd31ffbc26d4e9ae1f24b1d3928e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b13bd31ffbc26d4e9ae1f24b1d3928e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

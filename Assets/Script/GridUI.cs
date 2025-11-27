@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridUI : MonoBehaviour
 {
-    protected UIManager uiManager;
+    private UIManager uiManager;
     protected List<GridButton> buttons = new();  // 버튼 목록
 
     [Header("버튼 그리드")]
@@ -14,7 +14,7 @@ public class GridUI : MonoBehaviour
 
     private void Awake()
     {
-        uiManager = GetComponent<UIManager>();
+       uiManager = GetComponent<UIManager>();
     }
 
     // ItemData 타입 SO 처리

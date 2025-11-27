@@ -20,7 +20,7 @@ public class InputManager : MonoBehaviour
 
     public event Action OnShopKey;                   // 상점 키 눌렀을 때
     public event Action OnFoodKey;                   // 먹이 키 눌렀을 때
-    public event Action<int> OnScroll;               // 휠 굴릴 때 (먹이용,값 전달)
+    public event Action<int> OnScroll;               // 휠 굴릴 때 (도구용,값 전달)
     public event Action<Vector3> OnInteractionFood;  // 클릭했을 때 (먹이용,좌표 전달)
     public event Action<bool> OnInteractionClean;    // 누를 때, 뗄 때 (청소 도구용, 온오프 전달)
 
@@ -79,7 +79,7 @@ public class InputManager : MonoBehaviour
     }
 
     // 먹이 패널 버튼
-    public void OnOpenFood(InputAction.CallbackContext ctx)
+    public void OnOpenTool(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
@@ -145,6 +145,7 @@ public class InputManager : MonoBehaviour
     // 먹이 타입 변경
     public void OnChangeType(InputAction.CallbackContext ctx)
     {
+        Debug.Log("스크롤 / input");
         // 먹이, 청소 상태 아니면 무시
         if (currentState != InputState.SpawnFood && currentState != InputState.CleanTool) return;
 
@@ -220,7 +221,6 @@ public class InputManager : MonoBehaviour
     // -------------------------------------------
 
     // 마우스 UI 감지
-
     private bool IsPointerOverUI()
     {
         // 포인터 데이터 정보 생성

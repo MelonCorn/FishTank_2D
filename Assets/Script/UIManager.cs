@@ -40,10 +40,6 @@ public class UIManager : MonoBehaviour
         // 오픈 키 구독
         InputManager.Instance.OnShopKey += OnClickShop;
         InputManager.Instance.OnFoodKey += OnClickFood; 
-
-        // 인터페이스 마다 버튼 생성 호출
-        foreach (var ui in createButtonUI)
-            ui.CreateButtons();
     }
     private void OnDisable()
     {
@@ -60,6 +56,10 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        // 인터페이스 마다 버튼 생성 호출
+        foreach (var ui in createButtonUI)
+            ui.CreateButtons();
+
         // x만
         // 시작할 땐 닫힘 위치로
         shopPanel.anchoredPosition = new Vector2(closePos.anchoredPosition.x, shopPanel.anchoredPosition.y);

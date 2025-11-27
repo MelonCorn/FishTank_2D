@@ -3,8 +3,56 @@ using UnityEngine;
 
 public partial class FishTank
 {
+    //---------------------------------------------
+
+    #region 저장 및 불러오기
+
+    // 저장
+    public void Save(SaveData saveData)
+    {
+        // 물고기 데이터 저장
+        // 모든 활성화 물고기
+        List<FishAI> activeFishes = GetActiveItems<FishAI>();
+        foreach (FishAI fish in activeFishes)
+        {
+            // 저장 데이터에 추가
+            saveData.fishData.Add(fish.GetFishData());
+        }
+
+        // 배설물 데이터 저장
+        // 모든 활성화 배설물
+        List<Excrement> activeExcrements = GetActiveItems<Excrement>();
+
+        foreach (Excrement excrement in activeExcrements)
+        {
+            // 저장 데이터에 추가
+            saveData.excrementPosData.Add(excrement.transform.position);
+        }
+    }
+
+    // 불러오기
+    public void Load(SaveData saveData)
+    {
+        // 저장된 물고기들 활성화
+        foreach (var fishData in saveData.fishData)
+        {
+            SpawnSaveFishs(fishData);
+        }
+
+        // 저장된 배설물들 활성화
+        foreach (var pos in saveData.excrementPosData)
+        {
+            SpawnSaveExcrements(pos);
+        }
+    }
+
+    #endregion
+
+    //---------------------------------------------
+
+
     // 활성화 된 오브젝트 리스트 반환
-    public List<T>GetActiveItems<T>() where T : Component
+    private List<T>GetActiveItems<T>() where T : Component
     {
         // 활성화 T 리스트 생성
         List<T> activeList = new List<T>();

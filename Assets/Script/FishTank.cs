@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public partial class FishTank : MonoBehaviour
+public partial class FishTank : MonoBehaviour, ISaveable
 {
     private ObjectPool<FishAI> fishPool;           // 물고기 풀
     private ObjectPool<Excrement> excrementPool;   // 배설물 풀
@@ -20,6 +20,7 @@ public partial class FishTank : MonoBehaviour
     [Header("배설물")]
     [SerializeField] Excrement excrementPrefab;    // 배설물 프리팹
     [SerializeField] int excrementPoolDefaultSize = 100;// 초기화 수
+    [SerializeField] Sprite[] excrementSprites;    // 배설물 스프라이트
 
     [SerializeField] SpriteRenderer waterArea;          // 수조 구역
 
@@ -178,6 +179,10 @@ public partial class FishTank : MonoBehaviour
     public void Excretion(Vector3 fishPosition)
     {
         Excrement excrement = excrementPool.Get();
+
+        // 랜덤 스프라이트
+        Sprite sprite = excrementSprites[Random.Range(0, excrementSprites.Length)];
+        excrement.SetSprite(sprite);
 
         excrement.transform.position = fishPosition;
     }
