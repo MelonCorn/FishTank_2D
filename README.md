@@ -34,7 +34,7 @@
   - [통합 입력 관리자](#4-통합-입력-관리자)
   - [ISaveable 저장 시스템](#5-isaveable-저장-시스템)
   - [GridUI 버튼 생성 시스템](#6-gridui-버튼-생성-시스템)
-- [Prefab vs ScriptableObject](#-prefab-vs-scriptableobject)
+- [Prefab vs ScriptableObject](#prefab-vs-scriptableobject)
 - [트러블슈팅](#-트러블슈팅)
 - [회고](#-회고)
 
