@@ -18,7 +18,7 @@
 
 ## 시연 영상
 
-[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://youtu.be/pmbKJmH2m2I)
+[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://youtu.be/twSgongfN1E)
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/5e7106fd-ce99-4dec-b7e8-39380d3a147b" width="32%" alt="Image 1" />
