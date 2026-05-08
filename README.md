@@ -42,7 +42,6 @@
   - [GridUI 버튼 생성 시스템](#6-gridui-버튼-생성-시스템)
 - [Prefab vs ScriptableObject](#prefab-vs-scriptableobject)
 - [트러블슈팅](#-트러블슈팅)
-- [회고](#-회고)
 
 <br>
 
